@@ -1,0 +1,162 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".MainActivity"
+    android:layout_margin="10dp"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/icon"/>
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="Aesthetic Designs"
+            android:textSize="40sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+
+        >
+
+
+        <TextView
+            android:background="#f6f6f6"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Web developement business that delivers beautiful aesthetic designs that are powerful and easy to use. Our motto  has a lot of meaning but I didn't come up with it yet because this is just a mock up. "
+            android:textAlignment="center"
+            android:fontFamily="serif"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:fontFamily="serif"
+            android:text="Websites | Mobile Apps | Watches"/>
+
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffd05b"
+        android:padding="30dp"
+
+        >
+
+        <ImageView
+            android:id="@+id/operation_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/operation"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours: 8AM-5PM"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/operation_icon"
+            android:layout_toEndOf="@+id/operation_icon"
+            android:id="@+id/textView3"
+            android:layout_marginEnd="10dp"/>
+
+        <ImageView
+            android:id="@+id/phone_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_below="@+id/operation_icon"
+            android:src="@drawable/phone"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="+96656700001"
+            android:layout_below="@+id/operation_icon"
+            android:layout_toRightOf="@+id/phone_icon"
+            android:layout_toEndOf="@+id/phone_icon" />
+
+        <ImageView
+            android:id="@+id/email_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/email"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/textView3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="info@adesign.com"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/email_icon"
+            android:layout_toEndOf="@+id/email_icon"
+            />
+
+
+        <ImageView
+            android:id="@+id/box_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/box"
+            android:layout_below="@+id/email_icon"
+            android:layout_alignLeft="@+id/email_icon"
+            android:layout_alignStart="@+id/email_icon" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="P.O Box: 33333"
+            android:layout_below="@+id/email_icon"
+            android:layout_toRightOf="@+id/email_icon"
+            android:layout_toEndOf="@+id/email_icon" />
+
+
+        <ImageView
+            android:id="@+id/location_icon"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/location"
+            android:layout_alignParentBottom="true"
+            android:layout_alignLeft="@+id/phone_icon"
+            android:layout_alignStart="@+id/phone_icon" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="King Road Tower, 40th floor, office #1"
+            android:layout_alignBottom="@+id/location_icon"
+            android:layout_toRightOf="@+id/location_icon"
+            android:layout_toEndOf="@+id/location_icon" />
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
+
