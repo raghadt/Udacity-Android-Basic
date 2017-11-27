@@ -59,8 +59,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //------------------------------ Reset ----------------------------------
 
 
+
+
+    public void Reset(View view) {
+        team1=0;
+        team2=0;
+        team1Display(team1);
+        team2Display(team2);
+
+
+    }
 
 
 

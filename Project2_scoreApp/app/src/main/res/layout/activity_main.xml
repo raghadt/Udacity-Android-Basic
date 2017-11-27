@@ -40,7 +40,7 @@
     <TextView
         android:id="@+id/team1Text"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:background="@color/colorAccent"
         android:text="0"
         android:padding="80dp"
@@ -54,7 +54,7 @@
     <TextView
         android:id="@+id/team2Text"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="230dp"
         android:background="@color/colorPrimary"
         android:text="0"
         android:textAlignment="center"
@@ -93,6 +93,13 @@
 
             />
     </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        android:onClick="Reset"
+        />
 
 
 
