@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Project3_QuizApp</string>
+    <string name="introduction">This quiz is about basic astronomy knowledge.\nYou\'ll do great because you are a star</string>
+
+    <string name="question1">Q1: How many planets in the solar system?</string>
+    <string name="question2">Q2: What are the planets that surround planet Earth? </string>
+    <string name="question3">Q3: What\'s the name of the planet that was recently kicked out of the solar system? </string>
+    <string name="question4">Q4: Are you a star? </string>
+
+</resources>

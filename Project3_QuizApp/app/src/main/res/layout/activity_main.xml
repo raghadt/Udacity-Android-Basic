@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.raghadtaleb.project3_quizapp.MainActivity">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="10dp"
+    >
+
+    <TextView
+        style="@style/Header"
+        android:text="@string/introduction"
+
+        android:layout_margin="10dp"
+        />
+
+    <ImageView
+        android:layout_width="324dp"
+        android:layout_height="126dp"
+        android:layout_gravity="center"
+        android:src="@drawable/space"
+        />
+
+    <TextView
+        style="@style/questions"
+        android:text="@string/question1"
+
+        />
+    <RadioButton
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="3 Planets"
+        />
+    <RadioButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="6 Planets"
+        />
+    <RadioButton
+        android:id="@+id/planets"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+
+        android:text="8 Planets"
+        />
+
+
+    <TextView
+        style="@style/questions"
+        android:text="@string/question2"
+
+        />
+
+    <CheckBox
+        android:id="@+id/answer_venus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Venus"
+        />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Jupiter"
+        />
+
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Mars"
+        />
+
+
+    <TextView
+        style="@style/questions"
+        android:text="@string/question3"
+
+        />
+
+    <EditText
+        android:id="@+id/pluto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Answer"
+        />
+
+
+    <TextView
+        style="@style/questions"
+        android:text="@string/question4"
+
+
+        />
+
+    <RadioButton
+        android:id="@+id/star1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="Yes"
+        />
+    <RadioButton
+        android:id="@+id/star2"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:text="of course"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit!!"
+        android:onClick="submitAnswers"
+        />
+
+    <TextView
+
+        android:id="@+id/results"
+        style="@style/results"
+        android:text="No submission yet"
+        />
+
+
+
+
+
+
+
+</LinearLayout>
+
+</ScrollView>
