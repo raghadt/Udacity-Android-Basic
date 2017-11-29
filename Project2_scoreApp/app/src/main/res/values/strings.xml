@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Project2_scoreApp</string>
+    <string name="one_point">ONE POINT</string>
+
+    <string name="two_point">TWO POINT</string>
+    <string name="winning_team">WINNING TEAM</string>
+    <string name="reset">RESET</string>
+
 </resources>

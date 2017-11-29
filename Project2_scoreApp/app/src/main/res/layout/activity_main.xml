@@ -28,7 +28,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="team1One"
-                android:text="ONE POINT"
+                android:text="@string/one_point"
 
                 />
 
@@ -47,9 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="team1Two"
-                android:text="2 POINTS"
-
-
+                android:text="@string/two_point"
                 />
 
         </LinearLayout>
@@ -66,9 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="team2One"
-                android:text="ONE POINT"
-
-
+                android:text="@string/one_point"
                 />
 
             <TextView
@@ -89,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:onClick="team2Two"
-                android:text="2 POINTS"
+                android:text="@string/two_point"
                 />
 
 
@@ -101,15 +97,15 @@
     <TextView
         android:id="@+id/WinningTeam"
         android:layout_width="match_parent"
-        android:layout_height="350px"
+        android:layout_height="150dp"
         android:gravity="center"
-        android:text="Windding Team" />
+        android:text="@string/winning_team" />
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:onClick="Reset"
-        android:text="Reset" />
+        android:text="@string/reset" />
 
 </LinearLayout>
 
