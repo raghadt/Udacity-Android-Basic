@@ -1,106 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.raghadtaleb.project2_scoreapp.MainActivity"
-    android:orientation="vertical"
     >
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ONE POINT"
-        android:layout_weight="3"
-        android:onClick="team1One"
-
-        />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="2 POINTS"
-        android:layout_weight="1"
-        android:onClick="team1Two"
-
-
-        />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-
-    <TextView
-        android:id="@+id/team1Text"
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:background="@color/colorAccent"
-        android:text="0"
-        android:padding="80dp"
-        android:textAlignment="center"
-        android:textSize="30sp"
-
-
-        />
-
-
-    <TextView
-        android:id="@+id/team2Text"
-        android:layout_width="match_parent"
-        android:layout_height="230dp"
-        android:background="@color/colorPrimary"
-        android:text="0"
-        android:textAlignment="center"
-        android:padding="80dp"
-        android:textSize="30sp"
-
-
-        />
-
-    </LinearLayout>
-
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.raghadtaleb.project2_scoreapp.MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <Button
-            android:layout_width="wrap_content"
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="ONE POINT"
-            android:layout_weight="3"
-            android:onClick="team2One"
-
-
-            />
-        <Button
-            android:id="@+id/btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:text="2 POINTS"
             android:layout_weight="1"
-            android:onClick="team2Two"
+            android:orientation="vertical">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="team1One"
+                android:text="ONE POINT"
+
+                />
+
+            <TextView
+                android:id="@+id/team1Text"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@color/colorAccent"
+                android:gravity="center"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="30sp"
+                />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="team1Two"
+                android:text="2 POINTS"
 
 
-            />
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="team2One"
+                android:text="ONE POINT"
+
+
+                />
+
+            <TextView
+                android:id="@+id/team2Text"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:text="0"
+                android:textAlignment="center"
+                android:textSize="30sp"
+
+
+                />
+
+            <Button
+                android:id="@+id/btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="team2Two"
+                android:text="2 POINTS"
+                />
+
+
+        </LinearLayout>
+
+
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/WinningTeam"
+        android:layout_width="match_parent"
+        android:layout_height="350px"
+        android:gravity="center"
+        android:text="Windding Team" />
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Reset"
+        android:layout_height="match_parent"
         android:onClick="Reset"
-        />
-
-
+        android:text="Reset" />
 
 </LinearLayout>
+
+
+</ScrollView>

@@ -15,19 +15,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    int team1=0;
-    int team2=0;
+    int team1 = 0;
+    int team2 = 0;
 
-//------------------------------ display methods ----------------------------------
+    //------------------------------ display methods ----------------------------------
     public void team1Display(int team1) {
 
         TextView scoreView = (TextView) findViewById(R.id.team1Text);
         scoreView.setText(String.valueOf(team1));
+        winTeam();
+
     }
 
     public void team2Display(int team2) {
         TextView scoreView = (TextView) findViewById(R.id.team2Text);
         scoreView.setText(String.valueOf(team2));
+        winTeam();
+
     }
 
 //------------------------------ Team one ----------------------------------
@@ -52,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         team2Display(team2);
 
     }
+
     public void team2Two(View view) {
         team2 += 2;
         team2Display(team2);
@@ -62,17 +67,28 @@ public class MainActivity extends AppCompatActivity {
     //------------------------------ Reset ----------------------------------
 
 
-
-
     public void Reset(View view) {
-        team1=0;
-        team2=0;
+        team1 = 0;
+        team2 = 0;
         team1Display(team1);
         team2Display(team2);
-
-
     }
 
+    //-------------------------------------------------------------------------------
+    public void winTeam() {
+
+        TextView WinningTeam = (TextView) findViewById(R.id.WinningTeam);
+        if (team1 > team2) {
+            WinningTeam.setText("Team One is WINNING");
+
+        } else if (team1 < team2) {
+            WinningTeam.setText("Team Two is WINNING ");
+
+        } else {
+            WinningTeam.setText("Tie!");
+
+        }
+    }
 
 
 }
