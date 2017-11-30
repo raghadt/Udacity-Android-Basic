@@ -8,8 +8,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import static com.example.raghadtaleb.project3_quizapp.R.id.answer_venus;
+//import static com.example.raghadtaleb.project3_quizapp;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,41 +20,70 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void submitAnswers(View view) {
+    int counter;
 
-        RadioButton answer_8_planets = (RadioButton) findViewById(R.id.planets);
-        boolean question1_planets = answer_8_planets.isChecked();
+    //--------------------------- question one ----------------------------
 
-        CheckBox answerVenus = (CheckBox) findViewById(answer_venus);
-        boolean question2_venus = answerVenus.isChecked();
+    public void questionOne() {
+        RadioButton questionOne = (RadioButton) findViewById(R.id.questionOneCorrect);
+        boolean questionOneAnswer = questionOne.isChecked();
+        if (questionOneAnswer)
+            counter++;
+    }
 
-        EditText answer_pluto = (EditText) findViewById(R.id.pluto);
-        boolean question3_pluto=false;
+    //--------------------------- question two ----------------------------
 
-        if(answer_pluto.getText().toString().toLowerCase().equals("pluto")){
-            question3_pluto = true;
+    public void questionTwo() {
+        CheckBox questionTwo1 = (CheckBox) findViewById(R.id.questionTwoCorrect1);
+        CheckBox questionTwo2 = (CheckBox) findViewById(R.id.questionTwoCorrect2);
+        CheckBox questionTwoWrong = (CheckBox) findViewById(R.id.questionTwoWrong);
+
+        boolean questionTwoAnswer = (questionTwo1.isChecked()) && (questionTwo2.isChecked()) && (!questionTwoWrong.isChecked());
+
+        if (questionTwoAnswer)
+            counter++;
+    }
+
+    //--------------------------- question three ----------------------------
+
+    public void questionThree() {
+        EditText questionThree = (EditText) findViewById(R.id.questionThreeCorrect);
+
+        if (questionThree.getText().toString().toLowerCase().equals("pluto")) {
+            counter++;
         }
 
-        RadioButton star1 = (RadioButton) findViewById(R.id.star1);
-        RadioButton star2 = (RadioButton) findViewById(R.id.star2);
+    }
+
+    //--------------------------- question Four ----------------------------
+    public void questionFour() {
+
+        RadioButton star1 = (RadioButton) findViewById(R.id.questionFourCorrect1);
+        RadioButton star2 = (RadioButton) findViewById(R.id.questionFourCorrect2);
         boolean question4_star1 = star1.isChecked();
         boolean question4_star2 = star2.isChecked();
-        TextView results = (TextView) findViewById(R.id.results);
 
-        if (question2_venus && question1_planets && (question4_star1 || question4_star2) && question3_pluto) {
-            results.setText("You are right!");
+        if (question4_star1 || question4_star2)
+            counter++;
+    }
+
+
+    //--------------------------- Submit Answer ----------------------------
+    
+    public void submitAnswers(View view) {
+        counter = 0;
+
+        questionOne();
+        questionTwo();
+        questionThree();
+        questionFour();
+
+        if (counter == 4) {
+            Toast.makeText(MainActivity.this, "You are right! Great Job :)", Toast.LENGTH_LONG).show();
+
         } else {
-            if(!question1_planets){
-                results.setText("count them again!");
-            }
-            if(!question2_venus){
-                results.setText("hmm checkout question 2, it is also called the Earth sister");
-            }
+            Toast.makeText(MainActivity.this, "Try again :(", Toast.LENGTH_LONG).show();
 
-            if(!question3_pluto){
-                results.setText("it starts with p and ends with an o");
-            }
         }
-
     }
 }
