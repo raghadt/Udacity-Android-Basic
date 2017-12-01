@@ -59,17 +59,15 @@ public class MainActivity extends AppCompatActivity {
     public void questionFour() {
 
         RadioButton star1 = (RadioButton) findViewById(R.id.questionFourCorrect1);
-        RadioButton star2 = (RadioButton) findViewById(R.id.questionFourCorrect2);
         boolean question4_star1 = star1.isChecked();
-        boolean question4_star2 = star2.isChecked();
 
-        if (question4_star1 || question4_star2)
+        if (question4_star1)
             counter++;
     }
 
 
     //--------------------------- Submit Answer ----------------------------
-    
+
     public void submitAnswers(View view) {
         counter = 0;
 
@@ -79,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
         questionFour();
 
         if (counter == 4) {
-            Toast.makeText(MainActivity.this, "You are right! Great Job :)", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "You are right! Great job you answered "+counter+" questions correctly", Toast.LENGTH_LONG).show();
 
         } else {
-            Toast.makeText(MainActivity.this, "Try again :(", Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "Try again you answered "+counter+" questions correctly", Toast.LENGTH_LONG).show();
 
         }
     }
