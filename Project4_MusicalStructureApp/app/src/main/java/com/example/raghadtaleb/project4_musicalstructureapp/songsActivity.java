@@ -23,8 +23,8 @@ public class songsActivity extends AppCompatActivity {
 
         final ArrayList<Song> songs = new ArrayList<Song>();
 
-        songs.add(new Song("Unforgiven", "Metallica", "Metallica"));
-        songs.add(new Song("Enter Sandman", "Metallica", "Metallica"));
+        songs.add(new Song("Unforgiven", "Metallica", "Metallica Album"));
+        songs.add(new Song("Enter Sandman", "Metallica", "Metallica Album"));
         songs.add(new Song("Requiem", "Avenged Sevenfold", "Hail To The King"));
         songs.add(new Song("Always", "Killswitch Engage", "Disarm the Descent"));
 

@@ -35,4 +35,14 @@ public class Song {
     public void setArtistName(String artistName) {
         this.artistName = artistName;
     }
+
+
+
+    public String getAlbumName() {
+        return albumName;
+    }
+
+
+
+
 }

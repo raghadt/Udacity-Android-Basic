@@ -62,6 +62,13 @@ ArrayList<Song>songList;
 
         artistTextView.setText(currentSong.getArtistName());
 
+
+        TextView albumTextView = (TextView) listItemView.findViewById(R.id.album_text_view);
+
+
+        albumTextView.setText(currentSong.getAlbumName());
+
+
         return listItemView;
     }
 
