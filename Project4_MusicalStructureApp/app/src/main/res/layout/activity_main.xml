@@ -22,9 +22,8 @@
         style="@style/def"
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:text="@string/artist"
+        android:text="Now Playing"
         android:gravity="center"
         />
-
 
 </LinearLayout>
