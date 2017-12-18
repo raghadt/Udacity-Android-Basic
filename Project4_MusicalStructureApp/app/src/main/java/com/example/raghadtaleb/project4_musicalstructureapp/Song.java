@@ -18,7 +18,6 @@ public class Song {
     }
 
 
-
     public String getSongName() {
         return songName;
     }
@@ -37,12 +36,9 @@ public class Song {
     }
 
 
-
     public String getAlbumName() {
         return albumName;
     }
-
-
 
 
 }

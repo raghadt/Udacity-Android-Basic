@@ -2,7 +2,7 @@ package com.example.raghadtaleb.project4_musicalstructureapp;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 /**
  * Example local unit test, which will execute on the development machine (host).

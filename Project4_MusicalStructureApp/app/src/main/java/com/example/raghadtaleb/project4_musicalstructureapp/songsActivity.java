@@ -1,11 +1,7 @@
 package com.example.raghadtaleb.project4_musicalstructureapp;
 
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.GridView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -14,11 +10,11 @@ import java.util.ArrayList;
  * Created by raghadtaleb on 14/12/2017.
  */
 
-public class songsActivity extends AppCompatActivity {
+public class SongsActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-      setContentView(R.layout.song_list);
+        setContentView(R.layout.song_list);
 
 
         final ArrayList<Song> songs = new ArrayList<Song>();
@@ -34,7 +30,6 @@ public class songsActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.list);
 
         listView.setAdapter(adapter);
-
 
 
     }
