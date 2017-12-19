@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
         //----------------- Now Playing Activity --------------------------
 
         final TextView playing = (TextView) findViewById(R.id.playing);
