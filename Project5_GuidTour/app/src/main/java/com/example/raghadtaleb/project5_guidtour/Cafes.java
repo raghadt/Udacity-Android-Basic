@@ -2,7 +2,6 @@ package com.example.raghadtaleb.project5_guidtour;
 
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,8 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.TabHost;
-import android.widget.Toast;
+
 import java.util.ArrayList;
 
 /**
@@ -32,7 +30,7 @@ public class Cafes  extends Fragment {
         ArrayList<Resources>cafesList=new ArrayList<>();
 
         for(int i=0;i<MainActivity.resourcesArray.size();i++) {
-            if(MainActivity.resourcesArray.get(i).getResourceType().equals("beach")) {
+            if(MainActivity.resourcesArray.get(i).getResourceType().equals("Cafes")) {
                 cafesList.add(MainActivity.resourcesArray.get(i));
             }
         }

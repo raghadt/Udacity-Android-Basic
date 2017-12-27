@@ -1,7 +1,6 @@
 package com.example.raghadtaleb.project5_guidtour;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -29,7 +28,7 @@ public class Malls extends Fragment {
 
         ArrayList<Resources> mallsList=new ArrayList<>();
         for(int i=0;i<MainActivity.resourcesArray.size();i++) {
-            if(MainActivity.resourcesArray.get(i).getResourceType().equals("malls")) {
+            if(MainActivity.resourcesArray.get(i).getResourceType().equals("Malls")) {
                 mallsList.add(MainActivity.resourcesArray.get(i));
             }
         }

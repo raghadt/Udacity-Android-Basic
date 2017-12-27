@@ -1,6 +1,5 @@
 package com.example.raghadtaleb.project5_guidtour;
 
-import android.content.res.Resources;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
@@ -33,9 +32,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resourcesArray.add(new Resources("Corniche Jeddah","Family friendly"));
+        resourcesArray.add(new Resources("Northen Jeddah Cournich","Beach"));
+        resourcesArray.add(new Resources("Southern Jeddah Cournich","Beach"));
 
-        resourcesArray.add(new Resources("d", "d"));
+
+
+        resourcesArray.add(new Resources("RedSea Mall","Malls"));
+        resourcesArray.add(new Resources("Mall of Arab","Malls"));
+
+        resourcesArray.add(new Resources("Rosopomodoro","Cuisines"));
+        resourcesArray.add(new Resources("PF chang","Cuisines"));
+
+        resourcesArray.add(new Resources("Medd Cafe","Cafes"));
+        resourcesArray.add(new Resources("Starbuck","Cafes"));
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
