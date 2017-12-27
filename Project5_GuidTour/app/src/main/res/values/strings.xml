@@ -1,3 +1,8 @@
 <resources>
-    <string name="app_name">Project5_GuidTour</string>
+    <string name="app_name">Jeddah Guid</string>
+    <string name="tab_text_1">Beach</string>
+    <string name="tab_text_2">Malls</string>
+    <string name="tab_text_3">Cuisines</string>
+    <string name="tab_text_4">Cafes</string>
+
 </resources>
