@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Fragment Challenge</string>
+    <string name="tab_text_1">Youtube</string>
+    <string name="tab_text_2">Slideshare</string>
+    <string name="tab_text_3">W3School</string>
+
+</resources>
