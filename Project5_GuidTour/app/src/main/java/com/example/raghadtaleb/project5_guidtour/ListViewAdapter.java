@@ -52,11 +52,12 @@ public class ListViewAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         View view= LayoutInflater.from(Context).inflate(R.layout.listitem,parent,false);
 
-        TextView AttractionName=view.findViewById(R.id.name);
-        TextView AttractionInfo=view.findViewById(R.id.type);
+        TextView name=view.findViewById(R.id.name);
+        TextView type=view.findViewById(R.id.type);
+        ImageView picture = view.findViewById(R.id.img);
 
-        AttractionName.setText(getItem(position).getName());
-        AttractionInfo.setText(getItem(position).getResourceType());
+        name.setText(getItem(position).getName());
+        type.setText(getItem(position).getResourceType());
 
         return view;
     }

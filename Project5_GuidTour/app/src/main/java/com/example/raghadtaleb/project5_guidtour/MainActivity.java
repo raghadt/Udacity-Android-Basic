@@ -32,22 +32,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resourcesArray.add(new Resources("Northen Jeddah Cournich","Beach"));
-        resourcesArray.add(new Resources("Southern Jeddah Cournich","Beach"));
+        resourcesArray.add(new Resources("Northen Jeddah Cournich","Beach", R.drawable.courn));
+        resourcesArray.add(new Resources("Southern Jeddah Cournich","Beach", R.drawable.scour));
 
 
 
-        resourcesArray.add(new Resources("RedSea Mall","Malls"));
-        resourcesArray.add(new Resources("Mall of Arab","Malls"));
+        resourcesArray.add(new Resources("RedSea Mall","Malls", R.drawable.resea));
+        resourcesArray.add(new Resources("Mall of Arab","Malls", R.drawable.marab));
 
-        resourcesArray.add(new Resources("Rosopomodoro","Cuisines"));
-        resourcesArray.add(new Resources("PF chang","Cuisines"));
+        resourcesArray.add(new Resources("Rosopomodoro","Cuisines", R.drawable.roso));
+        resourcesArray.add(new Resources("PF chang","Cuisines", R.drawable.pf));
 
-        resourcesArray.add(new Resources("Medd Cafe","Cafes"));
-        resourcesArray.add(new Resources("Starbuck","Cafes"));
+        resourcesArray.add(new Resources("Medd Cafe","Cafes", R.drawable.medd));
+        resourcesArray.add(new Resources("Starbuck","Cafes", R.drawable.starbucks));
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+       setSupportActionBar(toolbar);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
         PagerAdapter = new Pager(getSupportFragmentManager());
