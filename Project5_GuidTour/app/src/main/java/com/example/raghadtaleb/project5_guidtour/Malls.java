@@ -19,16 +19,16 @@ public class Malls extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View malls=inflater.inflate(R.layout.malls, container, false);
-        AddListView(container.getContext(),malls);
+        View malls = inflater.inflate(R.layout.malls, container, false);
+        AddListView(container.getContext(), malls);
         return malls;
     }
 
-    public void AddListView(Context context, View view){
+    public void AddListView(Context context, View view) {
 
-        ArrayList<Resources> mallsList=new ArrayList<>();
-        for(int i=0;i<MainActivity.resourcesArray.size();i++) {
-            if(MainActivity.resourcesArray.get(i).getResourceType().equals("Malls")) {
+        ArrayList<Resources> mallsList = new ArrayList<>();
+        for (int i = 0; i < MainActivity.resourcesArray.size(); i++) {
+            if (MainActivity.resourcesArray.get(i).getResourceType().equals("Malls")) {
                 mallsList.add(MainActivity.resourcesArray.get(i));
             }
         }

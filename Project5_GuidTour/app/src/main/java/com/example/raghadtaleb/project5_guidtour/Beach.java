@@ -15,21 +15,21 @@ import java.util.ArrayList;
  * Created by raghadtaleb on 27/12/2017.
  */
 
-public class Beach  extends Fragment {
+public class Beach extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View beach=inflater.inflate(R.layout.beach, container, false);
-        AddListView(container.getContext(),beach);
+        View beach = inflater.inflate(R.layout.beach, container, false);
+        AddListView(container.getContext(), beach);
         return beach;
     }
 
-    public void AddListView(Context context, View view){
+    public void AddListView(Context context, View view) {
 
-        ArrayList<Resources>beachList=new ArrayList<>();
+        ArrayList<Resources> beachList = new ArrayList<>();
 
-        for(int i=0;i<MainActivity.resourcesArray.size();i++) {
-            if(MainActivity.resourcesArray.get(i).getResourceType().equals("Beach")) {
+        for (int i = 0; i < MainActivity.resourcesArray.size(); i++) {
+            if (MainActivity.resourcesArray.get(i).getResourceType().equals("Beach")) {
                 beachList.add(MainActivity.resourcesArray.get(i));
             }
         }

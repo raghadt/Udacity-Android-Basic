@@ -10,27 +10,18 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-
-import java.util.ArrayList;
 
 /**
  * Created by raghadtaleb on 27/12/2017.
  */
 
 public class ListViewAdapter extends BaseAdapter {
-     Context Context;
+    Context Context;
     ArrayList<Resources> resourcesList;
 
     public ListViewAdapter(Context c, ArrayList<Resources> AttractionList) {
         Context = c;
-        this.resourcesList=AttractionList;
-
-
+        this.resourcesList = AttractionList;
     }
 
     @Override
@@ -50,15 +41,30 @@ public class ListViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view= LayoutInflater.from(Context).inflate(R.layout.listitem,parent,false);
 
-        TextView name=view.findViewById(R.id.name);
-        TextView type=view.findViewById(R.id.type);
-        ImageView picture = view.findViewById(R.id.img);
+        View view = convertView;
+        if (view == null) {
+            view = LayoutInflater.from(Context).inflate(R.layout.listitem, parent, false);
+        }
 
-        name.setText(getItem(position).getName());
-        type.setText(getItem(position).getResourceType());
+        Resources currentR = getItem(position);
 
+        TextView name = view.findViewById(R.id.name);
+        TextView type = view.findViewById(R.id.type);
+
+
+        name.setText(currentR.getName());
+        type.setText(currentR.getResourceType());
+
+
+        ImageView imageView = view.findViewById(R.id.img);
+        if (currentR.hasImage()) {
+            imageView.setImageResource(currentR.getImageResourceId());
+
+            imageView.setVisibility(View.VISIBLE);
+        } else {
+            imageView.setVisibility(View.GONE);
+        }
         return view;
     }
 }

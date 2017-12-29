@@ -16,21 +16,21 @@ import java.util.ArrayList;
  * Created by raghadtaleb on 27/12/2017.
  */
 
-public class Cafes  extends Fragment {
+public class Cafes extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View cafes=inflater.inflate(R.layout.cafes, container, false);
-        AddListView(container.getContext(),cafes);
+        View cafes = inflater.inflate(R.layout.cafes, container, false);
+        AddListView(container.getContext(), cafes);
         return cafes;
     }
 
-    public void AddListView(Context context, View view){
+    public void AddListView(Context context, View view) {
 
-        ArrayList<Resources>cafesList=new ArrayList<>();
+        ArrayList<Resources> cafesList = new ArrayList<>();
 
-        for(int i=0;i<MainActivity.resourcesArray.size();i++) {
-            if(MainActivity.resourcesArray.get(i).getResourceType().equals("Cafes")) {
+        for (int i = 0; i < MainActivity.resourcesArray.size(); i++) {
+            if (MainActivity.resourcesArray.get(i).getResourceType().equals("Cafes")) {
                 cafesList.add(MainActivity.resourcesArray.get(i));
             }
         }

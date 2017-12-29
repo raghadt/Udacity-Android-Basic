@@ -2,9 +2,11 @@ package com.example.raghadtaleb.project5_guidtour;
 
 
 public class Resources {
+
+    private static final int NO_IMAGE_PROVIDED = -1;
     String name;
     String resourceType;
-    int imageResourceId;
+    private int imageResourceId = NO_IMAGE_PROVIDED;
 
     public Resources(String name, String resourceType, int imageResourceId) {
         this.name = name;
@@ -21,8 +23,11 @@ public class Resources {
         return name;
     }
 
-    public int getImageResourceId(){
+    public int getImageResourceId() {
         return imageResourceId;
     }
 
+    public boolean hasImage() {
+        return imageResourceId != NO_IMAGE_PROVIDED;
+    }
 }

@@ -19,16 +19,16 @@ public class Cuisines extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        View cuisines=inflater.inflate(R.layout.cuisines, container, false);
-        AddListView(container.getContext(),cuisines);
+        View cuisines = inflater.inflate(R.layout.cuisines, container, false);
+        AddListView(container.getContext(), cuisines);
         return cuisines;
     }
 
-    public void AddListView(Context context, View view){
+    public void AddListView(Context context, View view) {
 
-        ArrayList<Resources> cuisinesList=new ArrayList<>();
-        for(int i=0;i<MainActivity.resourcesArray.size();i++) {
-            if(MainActivity.resourcesArray.get(i).getResourceType().equals("Cuisines")) {
+        ArrayList<Resources> cuisinesList = new ArrayList<>();
+        for (int i = 0; i < MainActivity.resourcesArray.size(); i++) {
+            if (MainActivity.resourcesArray.get(i).getResourceType().equals("Cuisines")) {
                 cuisinesList.add(MainActivity.resourcesArray.get(i));
             }
         }

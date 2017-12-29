@@ -1,30 +1,17 @@
 package com.example.raghadtaleb.project5_guidtour;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
+    static ArrayList<Resources> resourcesArray = new ArrayList<>();
     private Pager PagerAdapter;
-    static ArrayList<Resources> resourcesArray=new ArrayList<>();
     private ViewPager mViewPager;
 
     @Override
@@ -32,22 +19,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resourcesArray.add(new Resources("Northen Jeddah Cournich","Beach", R.drawable.courn));
-        resourcesArray.add(new Resources("Southern Jeddah Cournich","Beach", R.drawable.scour));
+        resourcesArray.add(new Resources("Northen Jeddah Cournich", "Beach", R.drawable.courn));
+        resourcesArray.add(new Resources("Southern Jeddah Cournich", "Beach", R.drawable.scour));
 
 
+        resourcesArray.add(new Resources("RedSea Mall", "Malls", R.drawable.resea));
+        resourcesArray.add(new Resources("Mall of Arab", "Malls", R.drawable.marab));
 
-        resourcesArray.add(new Resources("RedSea Mall","Malls", R.drawable.resea));
-        resourcesArray.add(new Resources("Mall of Arab","Malls", R.drawable.marab));
+        resourcesArray.add(new Resources("Rosopomodoro", "Cuisines", R.drawable.roso));
+        resourcesArray.add(new Resources("PF chang", "Cuisines", R.drawable.pfc));
 
-        resourcesArray.add(new Resources("Rosopomodoro","Cuisines", R.drawable.roso));
-        resourcesArray.add(new Resources("PF chang","Cuisines", R.drawable.pf));
-
-        resourcesArray.add(new Resources("Medd Cafe","Cafes", R.drawable.medd));
-        resourcesArray.add(new Resources("Starbuck","Cafes", R.drawable.starbucks));
+        resourcesArray.add(new Resources("Medd Cafe", "Cafes", R.drawable.medd));
+        resourcesArray.add(new Resources("Starbuck", "Cafes", R.drawable.starbucks));
 
         Toolbar toolbar = findViewById(R.id.toolbar);
-       setSupportActionBar(toolbar);
+        setSupportActionBar(toolbar);
 
         TabLayout tabLayout = findViewById(R.id.tabs);
         PagerAdapter = new Pager(getSupportFragmentManager());

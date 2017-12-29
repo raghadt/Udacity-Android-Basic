@@ -8,8 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import java.util.ArrayList;
-
 public class Pager extends FragmentPagerAdapter {
 
     public Pager(FragmentManager fm) {
@@ -18,21 +16,21 @@ public class Pager extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
-                Beach beach=new Beach();
+                Beach beach = new Beach();
                 return beach;
 
             case 1:
-                Malls malls=new Malls();
+                Malls malls = new Malls();
                 return malls;
 
             case 2:
-                Cuisines cuisines=new Cuisines();
+                Cuisines cuisines = new Cuisines();
                 return cuisines;
 
             case 3:
-                Cafes cafes=new Cafes();
+                Cafes cafes = new Cafes();
                 return cafes;
         }
         return null;
