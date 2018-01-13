@@ -1,8 +1,21 @@
 <resources>
     <string name="app_name">Jeddah Guid</string>
-    <string name="tab_text_1">Beach</string>
-    <string name="tab_text_2">Malls</string>
-    <string name="tab_text_3">Cuisines</string>
-    <string name="tab_text_4">Cafes</string>
+    <string name="beach">Beach</string>
+    <string name="malls">Malls</string>
+    <string name="cuisines">Cuisines</string>
+    <string name="cafes">Cafes</string>
+
+    <string name="redsea">Red Sea Mall</string>
+    <string name="arabmall">Arab Mall</string>
+
+    <string name="Starbucks">Starbucks Cafe</string>
+    <string name="Medd">Medd Cafe</string>
+
+    <string name="rosopomodoro">Rosopomodoro</string>
+    <string name="pfc">PF Chang</string>
+
+    <string name="northc">Northen Jeddah Cournich </string>
+    <string name="southc">South Jeddah Cournich </string>
+
 
 </resources>

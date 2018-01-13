@@ -19,18 +19,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        resourcesArray.add(new Resources("Northen Jeddah Cournich", "Beach", R.drawable.courn));
-        resourcesArray.add(new Resources("Southern Jeddah Cournich", "Beach", R.drawable.scour));
 
 
-        resourcesArray.add(new Resources("RedSea Mall", "Malls", R.drawable.resea));
-        resourcesArray.add(new Resources("Mall of Arab", "Malls", R.drawable.marab));
+        resourcesArray.add(new Resources(getString(R.string.northc),getString(R.string.beach), R.drawable.courn));
+        resourcesArray.add(new Resources(getString(R.string.southc), getString(R.string.beach), R.drawable.scour));
 
-        resourcesArray.add(new Resources("Rosopomodoro", "Cuisines", R.drawable.roso));
-        resourcesArray.add(new Resources("PF chang", "Cuisines", R.drawable.pfc));
 
-        resourcesArray.add(new Resources("Medd Cafe", "Cafes", R.drawable.medd));
-        resourcesArray.add(new Resources("Starbuck", "Cafes", R.drawable.starbucks));
+        resourcesArray.add(new Resources(getString(R.string.redsea),  getString(R.string.malls), R.drawable.resea));
+        resourcesArray.add(new Resources(getString(R.string.arabmall),  getString(R.string.malls), R.drawable.marab));
+
+        resourcesArray.add(new Resources(getString(R.string.rosopomodoro), getString(R.string.cuisines), R.drawable.roso));
+        resourcesArray.add(new Resources(getString(R.string.pfc), getString(R.string.cuisines), R.drawable.pfc));
+
+        resourcesArray.add(new Resources(getString(R.string.Medd), getString(R.string.cafes), R.drawable.medd));
+        resourcesArray.add(new Resources(getString(R.string.Starbucks), getString(R.string.cafes), R.drawable.starbucks));
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
