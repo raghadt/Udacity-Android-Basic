@@ -6,8 +6,8 @@ package com.example.raghadtaleb.project6_newsapp;
 
 public class JSONadapter {
 
-    String title;
-    String section_name;
+    String title = "idk";
+    String section_name = " uff";
     String author_name;
     String date;
 

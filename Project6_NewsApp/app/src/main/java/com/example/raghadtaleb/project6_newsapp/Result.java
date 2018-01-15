@@ -1,5 +1,6 @@
 package com.example.raghadtaleb.project6_newsapp;
 
+import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -14,6 +15,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by raghadtaleb on 13/01/2018.
@@ -21,50 +23,89 @@ import java.util.ArrayList;
 
 public class Result {
 
-    static String name;
     private static String LOG_TAG = Result.class.getSimpleName();
 
     private Result() {
     }
 
-    public static JSONadapter extractResultFromJson(String JsonString) throws JSONException {
+    public static List<JSONadapter> extractResultFromJson(String JsonString) throws JSONException {
         JSONadapter jsonInformation = null;
+        String title="",webPublicationDate="s", sectionName="", fName="", lName="", authorName="Anon";
+        ArrayList<JSONadapter> newsArray = new ArrayList<>();
 
-        //TODO: get the json information and fill the object
 
         JSONObject root = new JSONObject(JsonString);
         JSONObject response = root.getJSONObject("response");
-        JSONArray result = response.getJSONArray("result");
+        JSONArray result = response.getJSONArray("results");
         int m = result.length();
-        ArrayList<String> resultArray = new ArrayList<>();
-        String title="", sectionName="";
+
         if (m > 0) {
             for (int i = 0; i < m; i++) {
-                JSONObject j = result.getJSONObject(i);
-                title = j.getString("webTitle");
-                resultArray.add(title);
+                Log.i("Result", "I  is "+i);
 
-                sectionName = j.getString("sectionName");
-                resultArray.add(sectionName);
+                JSONObject jobject = result.getJSONObject(i);
+
+                title = jobject.getString("webTitle");
+                sectionName = jobject.getString("sectionName");
+                webPublicationDate = jobject.getString("webPublicationDate");
+
+                JSONArray tags = jobject.getJSONArray("tags");
+
+                for (int j = 0; j < tags.length(); j++){
+
+                JSONObject jObjectTags = tags.getJSONObject(j);
+                fName = jObjectTags.getString("firstName");
+                lName = jObjectTags.getString("firstName");
+
+                    if(fName.equals("")){
+                        authorName = lName;
+                    } else if(lName.equals("")){
+                        authorName = fName;
+                    } else {
+                        authorName = fName + " " + lName;
+                    }
+                }
+                jsonInformation = new JSONadapter(title, sectionName, authorName,webPublicationDate );
+                newsArray.add(jsonInformation);
             }
         }
-        jsonInformation = new JSONadapter(title, sectionName);
-        return jsonInformation;
+//
+//        Log.i("Result",sectionName);
+//        Log.i("Result",authorName);
+//        Log.i("Result",webPublicationDate);
 
+
+
+        return newsArray;
     }
 
 
-    public static JSONadapter GetURLData(URL requestUrl) throws JSONException {
+//    public static JSONadapter GetURLData(URL requestUrl) throws JSONException {
+//
+//        String jsonResponse = null;
+//        try {
+//            jsonResponse = makeHttpRequest(requestUrl);
+//        } catch (IOException e) {
+//            Log.e(LOG_TAG, e.getMessage());
+//        }
+//        JSONadapter jsonInformation = extractResultFromJson(jsonResponse);
+//
+//        return jsonInformation;
+//    }
+
+    public static List<JSONadapter> GetURLData(URL requestUrl) throws JSONException {
 
         String jsonResponse = null;
+        List<JSONadapter> news =null;
+
         try {
             jsonResponse = makeHttpRequest(requestUrl);
         } catch (IOException e) {
             Log.e(LOG_TAG, e.getMessage());
         }
-        JSONadapter jsonInformation = extractResultFromJson(jsonResponse);
+        news = extractResultFromJson(jsonResponse);
 
-        return jsonInformation;
+        return news;
     }
 
     private static String makeHttpRequest(URL url) throws IOException {

@@ -9,13 +9,14 @@ import org.json.JSONException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * Created by raghadtaleb on 13/01/2018.
  */
 
-public class Loader extends AsyncTaskLoader<JSONadapter> {
+public class Loader extends AsyncTaskLoader<List<JSONadapter>> {
     private String StringwebUrl;
 
     public Loader(Context context, String url) {
@@ -30,15 +31,16 @@ public class Loader extends AsyncTaskLoader<JSONadapter> {
     }
 
     @Override
-    public JSONadapter loadInBackground() {
+    public List<JSONadapter> loadInBackground() {
 
         JSONadapter jsonInfo = null;
+        List<JSONadapter> news =null;
         try {
-            jsonInfo = Result.GetURLData(makeURL(StringwebUrl));
+            news = Result.GetURLData(makeURL(StringwebUrl));
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return jsonInfo;
+        return news;
     }
 
     public URL makeURL(String url){
