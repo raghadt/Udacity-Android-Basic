@@ -41,7 +41,7 @@ public class Result {
 
         if (m > 0) {
             for (int i = 0; i < m; i++) {
-                Log.i("Result", "I  is "+i);
+//                Log.i("Result", "I  is "+i);
 
                 JSONObject jobject = result.getJSONObject(i);
 
@@ -55,47 +55,31 @@ public class Result {
 
                 JSONObject jObjectTags = tags.getJSONObject(j);
                 fName = jObjectTags.getString("firstName");
-                lName = jObjectTags.getString("firstName");
+                lName = jObjectTags.getString("lastName");
 
                     if(fName.equals("")){
-                        authorName = lName;
+                        authorName = "By: " + lName;
                     } else if(lName.equals("")){
-                        authorName = fName;
+                        authorName = "By: " + fName;
                     } else {
-                        authorName = fName + " " + lName;
+                        authorName = "By: " + fName + " " + lName;
                     }
+
                 }
+
+
                 jsonInformation = new JSONadapter(title, sectionName, authorName,webPublicationDate );
                 newsArray.add(jsonInformation);
             }
         }
-//
-//        Log.i("Result",sectionName);
-//        Log.i("Result",authorName);
-//        Log.i("Result",webPublicationDate);
-
-
-
         return newsArray;
     }
 
 
-//    public static JSONadapter GetURLData(URL requestUrl) throws JSONException {
-//
-//        String jsonResponse = null;
-//        try {
-//            jsonResponse = makeHttpRequest(requestUrl);
-//        } catch (IOException e) {
-//            Log.e(LOG_TAG, e.getMessage());
-//        }
-//        JSONadapter jsonInformation = extractResultFromJson(jsonResponse);
-//
-//        return jsonInformation;
-//    }
 
     public static List<JSONadapter> GetURLData(URL requestUrl) throws JSONException {
 
-        String jsonResponse = null;
+        String jsonResponse = "";
         List<JSONadapter> news =null;
 
         try {
@@ -104,24 +88,24 @@ public class Result {
             Log.e(LOG_TAG, e.getMessage());
         }
         news = extractResultFromJson(jsonResponse);
-
         return news;
     }
 
     private static String makeHttpRequest(URL url) throws IOException {
-        String jsonResponse = "";
-
+        String jsonResult = "";
         HttpURLConnection urlConnection = null;
         InputStream inputStream = null;
+
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setReadTimeout(10000);
             urlConnection.setConnectTimeout(15000);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
+
             if (urlConnection.getResponseCode() == 200) {
                 inputStream = urlConnection.getInputStream();
-                jsonResponse = readFromStream(inputStream);
+                jsonResult = readFromStream(inputStream);
             }
         } catch (IOException e) {
             Log.e(LOG_TAG, e.getMessage());
@@ -133,15 +117,17 @@ public class Result {
                 inputStream.close();
             }
         }
-        return jsonResponse;
+        return jsonResult;
     }
 
     private static String readFromStream(InputStream inputStream) throws IOException {
+
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
             BufferedReader reader = new BufferedReader(inputStreamReader);
             String line = reader.readLine();
+
             while (line != null) {
                 output.append(line);
                 line = reader.readLine();

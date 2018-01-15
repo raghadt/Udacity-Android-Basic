@@ -1,23 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.raghadtaleb.project6_newsapp.MainActivity"
-    android:orientation="vertical"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:paddingVertical="5dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    android:paddingTop="10dp"
     >
 
-    <ListView
-        android:id="@+id/list_view"
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+
+    >
+
+    <TextView
+        android:id="@+id/title"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scrollbars="none">
-
-    </ListView>
-
-
+        android:layout_height="wrap_content"
+        android:textSize="18sp"
+        android:text="Article Title"
+        android:textStyle="bold"/>
 
 
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Author Name" />
+
+
+</LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id="@+id/section_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:text="Section Name"
+            android:textStyle="italic"
+            />
+
+    </LinearLayout>
 
 </LinearLayout>
