@@ -1,6 +1,5 @@
 package com.example.raghadtaleb.project6_newsapp;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -30,45 +29,40 @@ public class Result {
 
     public static List<JSONadapter> extractResultFromJson(String JsonString) throws JSONException {
         JSONadapter jsonInformation = null;
-        String title="",webPublicationDate="s", sectionName="", fName="", lName="", authorName="Anon";
+        String title = "", webPublicationDate = "", webUrl = "", sectionName = "", fName = "", lName = "", authorName = "Anon";
         ArrayList<JSONadapter> newsArray = new ArrayList<>();
 
 
         JSONObject root = new JSONObject(JsonString);
         JSONObject response = root.getJSONObject("response");
         JSONArray result = response.getJSONArray("results");
-        int m = result.length();
 
+        int m = result.length();
         if (m > 0) {
             for (int i = 0; i < m; i++) {
-//                Log.i("Result", "I  is "+i);
-
                 JSONObject jobject = result.getJSONObject(i);
-
                 title = jobject.getString("webTitle");
                 sectionName = jobject.getString("sectionName");
+                webUrl = jobject.getString("webUrl");
                 webPublicationDate = jobject.getString("webPublicationDate");
-
                 JSONArray tags = jobject.getJSONArray("tags");
 
-                for (int j = 0; j < tags.length(); j++){
+                for (int j = 0; j < tags.length(); j++) {
 
-                JSONObject jObjectTags = tags.getJSONObject(j);
-                fName = jObjectTags.getString("firstName");
-                lName = jObjectTags.getString("lastName");
+                    JSONObject jObjectTags = tags.getJSONObject(j);
+                    fName = jObjectTags.getString("firstName");
+                    lName = jObjectTags.getString("lastName");
 
-                    if(fName.equals("")){
+                    if (fName.equals("")) {
                         authorName = "By: " + lName;
-                    } else if(lName.equals("")){
+                    } else if (lName.equals("")) {
                         authorName = "By: " + fName;
                     } else {
                         authorName = "By: " + fName + " " + lName;
                     }
-
                 }
 
-
-                jsonInformation = new JSONadapter(title, sectionName, authorName,webPublicationDate );
+                jsonInformation = new JSONadapter(title, sectionName, authorName, webPublicationDate, webUrl);
                 newsArray.add(jsonInformation);
             }
         }
@@ -76,11 +70,10 @@ public class Result {
     }
 
 
-
     public static List<JSONadapter> GetURLData(URL requestUrl) throws JSONException {
 
         String jsonResponse = "";
-        List<JSONadapter> news =null;
+        List<JSONadapter> news = null;
 
         try {
             jsonResponse = makeHttpRequest(requestUrl);

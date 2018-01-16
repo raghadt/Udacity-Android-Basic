@@ -8,7 +8,6 @@ import org.json.JSONException;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -34,7 +33,7 @@ public class Loader extends AsyncTaskLoader<List<JSONadapter>> {
     public List<JSONadapter> loadInBackground() {
 
         JSONadapter jsonInfo = null;
-        List<JSONadapter> news =null;
+        List<JSONadapter> news = null;
         try {
             news = Result.GetURLData(makeURL(StringwebUrl));
         } catch (JSONException e) {
@@ -43,8 +42,8 @@ public class Loader extends AsyncTaskLoader<List<JSONadapter>> {
         return news;
     }
 
-    public URL makeURL(String url){
-        URL weburl= null;
+    public URL makeURL(String url) {
+        URL weburl = null;
         try {
             weburl = new URL(url);
         } catch (MalformedURLException e) {

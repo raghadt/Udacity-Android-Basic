@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
 import java.util.ArrayList;
 
 /**
@@ -23,13 +24,13 @@ public class NewsAdapter extends ArrayAdapter<JSONadapter> {
         if (view == null) {
             view = LayoutInflater.from(getContext()).inflate(R.layout.list_items, parent, false);
         }
-        TextView title =  view.findViewById(R.id.title);
-        TextView author =  view.findViewById(R.id.author);
-        TextView date =  view.findViewById(R.id.date);
-        TextView section =  view.findViewById(R.id.section_name);
+        TextView title = view.findViewById(R.id.title);
+        TextView author = view.findViewById(R.id.author);
+        TextView date = view.findViewById(R.id.date);
+        TextView section = view.findViewById(R.id.section_name);
 
         JSONadapter currentNews = getItem(position);
-        
+
         title.setText(currentNews.getTitle());
         author.setText(currentNews.getAuthor_name());
         date.setText(currentNews.getDate());

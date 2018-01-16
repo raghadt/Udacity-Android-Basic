@@ -10,17 +10,18 @@ public class JSONadapter {
     String section_name;
     String author_name;
     String date;
+    String webUrl;
 
-    public JSONadapter(String title, String section_name, String author_name, String date) {
+    public JSONadapter(String title, String section_name, String author_name, String date, String webUrl) {
         this.title = title;
         this.section_name = section_name;
         this.author_name = author_name;
         this.date = date;
+        this.webUrl = webUrl;
     }
 
-    public JSONadapter(String title, String section_name) {
-        this.title = title;
-        this.section_name = section_name;
+    public String getWebUrl() {
+        return webUrl;
     }
 
     public String getTitle() {
