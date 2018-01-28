@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         values.put(Contract.nachosEntry.COLUMN_NACHOS_NAME, "Cheesy Nachos");
         values.put(Contract.nachosEntry.COLUMN_PRICE, 10);
         values.put(Contract.nachosEntry.COLUMN_QUANTITY, 100);
+        values.put(Contract.nachosEntry.COLUMN_IMAGE, "drawable/nachos.jpg");
         values.put(Contract.nachosEntry.COLUMN_SUPPLIER, "Dee");
         values.put(Contract.nachosEntry.COLUMN_SUPER_PHONE, 053331);
         values.put(Contract.nachosEntry.COLUMN_SUPP_EMAIL, "nachos@info.com");
