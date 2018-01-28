@@ -1,7 +1,6 @@
 package com.example.raghadtaleb.project8_inventoryapp;
 
 import android.content.Context;
-import android.database.DatabaseErrorHandler;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -24,11 +23,8 @@ public class DbHelper extends SQLiteOpenHelper {
             + Contract.nachosEntry.COLUMN_PRICE + " INTEGER NOT NULL, "
             + Contract.nachosEntry.COLUMN_QUANTITY + " INTEGER, "
             + Contract.nachosEntry.COLUMN_SUPPLIER + " TEXT, "
-            +Contract.nachosEntry.COLUMN_SUPER_PHONE + " INTEGER, "
+            + Contract.nachosEntry.COLUMN_SUPER_PHONE + " INTEGER, "
             + Contract.nachosEntry.COLUMN_SUPP_EMAIL + " TEXT);";
-
-
-
 
 
     public DbHelper(Context context) {
