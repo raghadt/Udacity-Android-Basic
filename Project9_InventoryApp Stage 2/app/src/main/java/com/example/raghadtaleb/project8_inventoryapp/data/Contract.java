@@ -1,4 +1,4 @@
-package com.example.raghadtaleb.project8_inventoryapp;
+package com.example.raghadtaleb.project8_inventoryapp.data;
 
 import android.content.ContentResolver;
 import android.net.Uri;
@@ -44,8 +44,6 @@ public class Contract {
         public final static String COLUMN_PRICE = "price";
 
         public final static String COLUMN_QUANTITY = "quantity";
-
-        public final static String COLUMN_IMAGE = "images";
 
         public final static String COLUMN_SUPPLIER = "supplier";
 

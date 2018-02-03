@@ -1,4 +1,4 @@
-package com.example.raghadtaleb.project8_inventoryapp;
+package com.example.raghadtaleb.project8_inventoryapp.data;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -22,8 +22,7 @@ public class DbHelper extends SQLiteOpenHelper {
             + Contract.nachosEntry.COLUMN_NACHOS_NAME + " TEXT NOT NULL, "
             + Contract.nachosEntry.COLUMN_PRICE + " INTEGER NOT NULL, "
             + Contract.nachosEntry.COLUMN_QUANTITY + " INTEGER, "
-            + Contract.nachosEntry.COLUMN_IMAGE + " TEXT, "
-            + Contract.nachosEntry.COLUMN_SUPPLIER + " TEXT, "
+            + Contract.nachosEntry.COLUMN_SUPPLIER + " TEXT NOT NULL, "
             + Contract.nachosEntry.COLUMN_SUPER_PHONE + " INTEGER, "
             + Contract.nachosEntry.COLUMN_SUPP_EMAIL + " TEXT);";
 
