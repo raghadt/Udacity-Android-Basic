@@ -4,21 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-
     tools:context="com.example.raghadtaleb.project8_inventoryapp.EditorsActivity">
 
 
-    <!-- Overview category -->
+
+    <TextView
+        android:text="@string/items"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
-
-        <TextView
-            android:text="Items"
-            style="@style/CategoryStyle" />
-
 
         <LinearLayout
             android:layout_width="0dp"
@@ -28,17 +27,19 @@
             android:orientation="vertical">
 
             <EditText
-                android:id="@+id/edit_item_name"
-                android:hint="@string/hint_item_name"
+                android:id="@+id/edit_itemname"
+                android:hint="@string/hint_itemname"
                 android:inputType="textCapWords"
-                style="@style/EditorFieldStyle"/>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                />
 
-            <!-- Brand field -->
+
             <EditText
-                android:id="@+id/edit_item_brand"
-                android:hint="Brand"
-                android:inputType="textCapWords"
-                style="@style/EditorFieldStyle" />
+                android:id="@+id/edit_suppname"
+                android:hint="@string/hint_itemsupp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -46,24 +47,29 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/price_decrement"
+                    android:id="@+id/decPRICE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/item_decrement"/>
+                    android:text="@string/minus"
+                    android:textColor="@color/colorAccent"
+                    />
 
 
                 <EditText
-                    android:id="@+id/edit_item_price"
-                    android:hint="Price"
+                    android:id="@+id/edit_price"
+                    android:hint="@string/hint_price"
                     android:inputType="textCapWords"
-                    style="@style/EditorFieldStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1" />
 
                 <Button
-                    android:id="@+id/price_increment"
+                    android:id="@+id/incPRICE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/item_increment"/>
+                    android:text="@string/plus"
+                    android:textColor="@color/colorAccent"
+                    />
 
             </LinearLayout>
 
@@ -73,24 +79,29 @@
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/quantity_decrement"
+                    android:id="@+id/decQuant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/item_decrement"/>
+                    android:text="@string/minus"
+                    android:textColor="@color/colorAccent"
+                    />
 
-                <!-- Quantity field -->
+
                 <EditText
-                    android:id="@+id/edit_item_quantity"
-                    android:hint="Quantatity"
+                    android:id="@+id/edit_quant"
+                    android:hint="@string/hint_quant"
                     android:inputType="textCapWords"
-                    style="@style/EditorFieldStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
                 <Button
-                    android:id="@+id/quantity_increment"
+                    android:id="@+id/incQuant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/item_increment"/>
+                    android:text="@string/plus"
+                    android:textColor="@color/colorAccent"
+                    />
             </LinearLayout>
 
         </LinearLayout>

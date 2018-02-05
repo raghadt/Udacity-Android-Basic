@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/activity_margin">
+android:layout_margin="15dp"
+    >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -20,25 +21,27 @@
                 android:id="@+id/item_name_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/item_name"/>
+                android:text="@string/nachos_name"
+                android:textSize="18sp"
+                />
 
             <TextView
-                android:id="@+id/item_brand_descrption"
+                android:id="@+id/item_supp_descrption"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/item_brand"/>
+                android:text="@string/supp"/>
 
             <TextView
                 android:id="@+id/item_quantity_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/item_quantity"/>
+                android:text="@string/quant"/>
 
             <TextView
                 android:id="@+id/item_price_description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/item_price"/>
+                android:text="@string/price"/>
 
         </LinearLayout>
 
@@ -46,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingLeft="@dimen/activity_margin">
+            android:layout_margin="15dp">
 
             <TextView
                 android:id="@+id/item_name"
@@ -54,7 +57,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/item_brand"
+                android:id="@+id/item_supp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -69,6 +72,7 @@
                 android:layout_height="wrap_content" />
 
         </LinearLayout>
+
     </LinearLayout>
 
 </LinearLayout>

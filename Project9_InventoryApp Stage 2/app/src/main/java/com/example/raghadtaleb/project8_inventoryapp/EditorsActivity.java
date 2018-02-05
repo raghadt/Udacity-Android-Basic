@@ -33,10 +33,12 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
     private static final int EXISTING_ITEM_LOADER = 0;
 
     private Uri currentItemUri;
+
     private EditText itemEditText;
-    private EditText brandEditText;
+    private EditText suppEditText;
     private EditText quantityEditText;
     private EditText itemPriceText;
+
     private Button quantityIncrement;
     private Button quantityDecrement;
     private Button priceIncrement;
@@ -45,7 +47,7 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
     private boolean changedItem = false;
 
 
-    private View.OnTouchListener mTouchListener = new View.OnTouchListener(){
+    private View.OnTouchListener touchListener = new View.OnTouchListener(){
 
         @Override
         public boolean onTouch(View view, MotionEvent motionEvent) {
@@ -63,33 +65,34 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         currentItemUri = intent.getData();
 
         if(currentItemUri!=null){
-            setTitle(R.string.editor_activity_title_edit_an_item);
+            setTitle(R.string.editing_item);
             getLoaderManager().initLoader(EXISTING_ITEM_LOADER, null, this);
+
         } else{
-            setTitle(R.string.editor_activity_title_new_item);
+            setTitle(R.string.add_new_item);
             invalidateOptionsMenu();
         }
 
-        itemEditText =  findViewById(R.id.edit_item_name);
-        brandEditText =   findViewById(R.id.edit_item_brand);
-        itemPriceText =   findViewById(R.id.edit_item_price);
-        quantityEditText =   findViewById(R.id.edit_item_quantity);
-        quantityIncrement =   findViewById(R.id.quantity_increment);
-        quantityDecrement =  findViewById(R.id.quantity_decrement);
-        priceIncrement = findViewById(R.id.price_increment);
-        priceDecrement = findViewById(R.id.price_decrement);
+        itemEditText =  findViewById(R.id.edit_itemname);
+        suppEditText =   findViewById(R.id.edit_suppname);
+        itemPriceText =   findViewById(R.id.edit_price);
+        quantityEditText =   findViewById(R.id.edit_quant);
+        quantityIncrement =   findViewById(R.id.incQuant);
+        quantityDecrement =  findViewById(R.id.decQuant);
+        priceIncrement = findViewById(R.id.incPRICE);
+        priceDecrement = findViewById(R.id.decPRICE);
 
 
-        itemEditText.setOnTouchListener(mTouchListener);
-        brandEditText.setOnTouchListener(mTouchListener);
-        itemPriceText.setOnTouchListener(mTouchListener);
-        quantityEditText.setOnTouchListener(mTouchListener);
+        itemEditText.setOnTouchListener(touchListener);
+        suppEditText.setOnTouchListener(touchListener);
+        itemPriceText.setOnTouchListener(touchListener);
+        quantityEditText.setOnTouchListener(touchListener);
 
 
         quantityIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                quantityIncrement();
+                incAmount();
                 changedItem = true;
             }
         });
@@ -97,7 +100,7 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         quantityDecrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                quantityDecrement();
+                decAmount();
                 changedItem = true;
             }
         });
@@ -105,7 +108,7 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         priceIncrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                priceIncrement();
+                incPrice();
                 changedItem = true;
             }
         });
@@ -113,77 +116,91 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         priceDecrement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                priceDecrement();
+                decPrice();
                 changedItem = true;
             }
         });
 
     }
 
-    //--------------------------------------------
+    //----------------------- Decrement Amount ---------------------
 
 
-    private void quantityDecrement() {
-        String previousValueString = quantityEditText.getText().toString();
-        int previousValue;
-        if (previousValueString.isEmpty()) {
+    private void decAmount() {
+        String prevValueString = quantityEditText.getText().toString();
+
+        if (prevValueString.isEmpty()) {
             return;
-        } else if (previousValueString.equals("0")) {
+        } else if (prevValueString.equals("0")) {
             return;
         } else {
-            previousValue = Integer.parseInt(previousValueString);
+          int previousValue = Integer.parseInt(prevValueString);
             quantityEditText.setText(String.valueOf(previousValue - 1));
         }
     }
 
-    private void quantityIncrement() {
-        String previousValueString = quantityEditText.getText().toString();
-        int previousValue;
-        if (previousValueString.isEmpty()) {
-            previousValue = 0;
+    //----------------------- Increment Amount ---------------------
+
+    private void incAmount() {
+        String prevValueString = quantityEditText.getText().toString();
+        int previousValue = 0;
+
+        if (prevValueString.isEmpty()) {
+            quantityEditText.setText(String.valueOf(previousValue + 1));
+
         } else {
-            previousValue = Integer.parseInt(previousValueString);
+            previousValue = Integer.parseInt(prevValueString);
+            quantityEditText.setText(String.valueOf(previousValue + 1));
         }
-        quantityEditText.setText(String.valueOf(previousValue + 1));
     }
 
-    private void priceDecrement() {
-        String previousValueString = itemPriceText.getText().toString();
-        int previousValue;
-        if (previousValueString.isEmpty()) {
+    //----------------------- Decrement Price ---------------------
+
+    private void decPrice() {
+        String preValueString = itemPriceText.getText().toString();
+
+        if (preValueString.isEmpty()) {
             return;
-        } else if (previousValueString.equals("0")) {
+        } else if (preValueString.equals("0")) {
             return;
         } else {
-            previousValue = Integer.parseInt(previousValueString);
+            int previousValue = Integer.parseInt(preValueString);
             itemPriceText.setText(String.valueOf(previousValue - 1));
         }
     }
 
-    private void priceIncrement() {
-        String previousValueString = itemPriceText.getText().toString();
-        int previousValue;
-        if (previousValueString.isEmpty()) {
-            previousValue = 0;
+    //----------------------- Increment Price ---------------------
+
+    private void incPrice() {
+        String preValueString = itemPriceText.getText().toString();
+        int previousValue = 0;
+
+        if (preValueString.isEmpty()) {
+            itemPriceText.setText(String.valueOf(previousValue + 1));
+
         } else {
-            previousValue = Integer.parseInt(previousValueString);
+            previousValue = Integer.parseInt(preValueString);
+            itemPriceText.setText(String.valueOf(previousValue + 1));
         }
-        itemPriceText.setText(String.valueOf(previousValue + 1));
     }
 
 
+    //----------------------- Save Item ---------------------
 
     private void saveItem () {
 
+        int price = 0;
+        int quantity = 0;
+        int changedRows;
 
         String itemString = itemEditText.getText().toString().trim();
-        String brandString = brandEditText.getText().toString().trim();
+        String suppString = suppEditText.getText().toString().trim();
         String priceString = itemPriceText.getText().toString().trim();
         String quantityString = quantityEditText.getText().toString().trim();
 
 
         if (currentItemUri == null &&
-                TextUtils.isEmpty(itemString) && TextUtils.isEmpty(brandString) && TextUtils.isEmpty(priceString)
+                TextUtils.isEmpty(itemString) && TextUtils.isEmpty(suppString) && TextUtils.isEmpty(priceString)
                 && TextUtils.isEmpty(quantityString)){
 
             return;
@@ -192,58 +209,49 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
 
         ContentValues contentValues = new ContentValues();
         contentValues.put(nachosEntry.COLUMN_NACHOS_NAME, itemString);
-        contentValues.put(nachosEntry.COLUMN_SUPPLIER, brandString);
+        contentValues.put(nachosEntry.COLUMN_SUPPLIER, suppString);
         contentValues.put(nachosEntry.COLUMN_PRICE, priceString);
         contentValues.put(nachosEntry.COLUMN_QUANTITY, quantityString);
 
 
-        int price = 0;
         if(!TextUtils.isEmpty(priceString)){
             price = Integer.parseInt(priceString);
         }
 
-        contentValues.put(nachosEntry.COLUMN_PRICE, price);
-
-        int quantity = 0;
         if (!TextUtils.isEmpty(quantityString)){
             quantity = Integer.parseInt(quantityString);
         }
 
+        contentValues.put(nachosEntry.COLUMN_PRICE, price);
         contentValues.put(nachosEntry.COLUMN_QUANTITY, quantity);
 
     if (currentItemUri == null){
 
             Uri newUri = getContentResolver().insert(nachosEntry.CONTENT_URI, contentValues);
-
             if (newUri == null) {
-
-                Toast.makeText(this, getString(R.string.editor_insert_item_failed),
+                Toast.makeText(this, getString(R.string.insert_item_failed),
                         Toast.LENGTH_SHORT).show();
-
+                Log.d("EditorsActivity", "Failed to insert item");
             } else {
-
-                Toast.makeText(this, getString(R.string.editor_insert_item_successful),
+                Toast.makeText(this, getString(R.string.insert_item_succ),
                         Toast.LENGTH_SHORT).show();
             }
+
         } else {
 
-
-            int rowsAffected = getContentResolver().update(currentItemUri, contentValues, null, null);
-
-
-
-            if (rowsAffected == 0){
-                Toast.makeText(this, getString(R.string.editor_insert_item_failed),
+             changedRows = getContentResolver().update(currentItemUri, contentValues, null, null);
+            if (changedRows == 0){
+                Toast.makeText(this, getString(R.string.insert_item_failed),
                         Toast.LENGTH_SHORT).show();
-
             } else {
-                // Otherwise, the insertion was successful and we can display a toast.
-                Toast.makeText(this, getString(R.string.editor_insert_item_successful),
+                Toast.makeText(this, getString(R.string.insert_item_succ),
                         Toast.LENGTH_SHORT).show();
             }
         }
     }
 
+
+    //----------------------- Other methods ---------------------
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -254,45 +262,34 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         switch (item.getItemId()){
 
-
             case R.id.action_save:
-
-
                 saveItem();
-
-
                 finish();
                 return true;
 
 
             case R.id.action_delete:
-
-
                 showDeleteConfirmationDialog();
                 return true;
 
 
             case android.R.id.home:
-
-
                 if (!changedItem) {
                     NavUtils.navigateUpFromSameTask(EditorsActivity.this);
                     return true;
                 }
 
 
-
                 DialogInterface.OnClickListener discardButtonClickListener =
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-
                                 NavUtils.navigateUpFromSameTask(EditorsActivity.this);
                             }
                         };
-
 
                 showUnsavedChangesDialog(discardButtonClickListener);
                 return true;
@@ -301,77 +298,59 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
     }
 
     private void showUnsavedChangesDialog(DialogInterface.OnClickListener discardButtonClickListener) {
-
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.unsaved_changes_dialog_msg);
+        builder.setMessage(R.string.exit_no_save);
         builder.setPositiveButton(R.string.discard, discardButtonClickListener);
-        builder.setNegativeButton(R.string.keep_editing, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.no_exit, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-
-
                 if (dialog != null) {
                     dialog.dismiss();
                 }
             }
         });
-
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
+
     private void showDeleteConfirmationDialog () {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.delete_dialog_msg);
-        builder.setPositiveButton(R.string.delete, new DialogInterface.OnClickListener() {
+        builder.setMessage(R.string.delete_item);
+        builder.setPositiveButton(R.string.delete_butt, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int id) {
-
                 deleteItem();
             }
         });
-        builder.setNegativeButton(R.string.cancel, new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.cancel_butt, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 if (dialog != null) {
                     dialog.dismiss();
                 }
-
             }
         });
-
 
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
 
     private void deleteItem () {
-
-
+        int deletedRows;
         if (currentItemUri != null) {
+            deletedRows = getContentResolver().delete(currentItemUri, null, null);
 
-
-            int rowsDeleted = getContentResolver().delete(currentItemUri, null, null);
-
-
-
-            if (rowsDeleted == 0) {
-
-
-                Toast.makeText(this, getString(R.string.editor_delete_item_failed),
+            if (deletedRows == 0) {
+                Toast.makeText(this, getString(R.string.delete_failed),
                         Toast.LENGTH_SHORT).show();
             } else {
-
-
-                Toast.makeText(this, getString(R.string.editor_delete_item_successful),
+                Toast.makeText(this, getString(R.string.delete_succ),
                         Toast.LENGTH_SHORT).show();
             }
         }
-
-
         finish();
     }
 
@@ -382,17 +361,12 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
             return;
         }
 
-
-
         DialogInterface.OnClickListener discardButtonClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int id) {
-
-
                 finish();
             }
         };
-
 
         showUnsavedChangesDialog(discardButtonClickListener);
     }
@@ -422,22 +396,20 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         if(cursor.moveToFirst()){
 
-            int nameColumnIndex = cursor.getColumnIndex(nachosEntry.COLUMN_NACHOS_NAME);
-            int brandColumnIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPPLIER);
-            int quantityColumnIndex = cursor.getColumnIndex(nachosEntry.COLUMN_QUANTITY);
-            int priceColumnIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
+            int nameIndex = cursor.getColumnIndex(nachosEntry.COLUMN_NACHOS_NAME);
+            int supplierIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPPLIER);
+            int quantityIndex = cursor.getColumnIndex(nachosEntry.COLUMN_QUANTITY);
+            int priceIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
 
-
-            String name = cursor.getString(nameColumnIndex);
-            String brand = cursor.getString(brandColumnIndex);
-            int quantity = cursor.getInt(quantityColumnIndex);
-            int price = cursor.getInt(priceColumnIndex);
-
+            String name = cursor.getString(nameIndex);
+            String supplier = cursor.getString(supplierIndex);
+            int quant = cursor.getInt(quantityIndex);
+            int price = cursor.getInt(priceIndex);
 
             itemEditText.setText(name);
-            brandEditText.setText(brand);
+            suppEditText.setText(supplier);
+            quantityEditText.setText(Integer.toString(quant));
             itemPriceText.setText(Integer.toString(price));
-            quantityEditText.setText(Integer.toString(quantity));
         }
     }
 
@@ -446,7 +418,7 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
     @Override
     public void onLoaderReset(Loader<Cursor> loader) {
         itemEditText.setText("");
-        brandEditText.setText("");
+        suppEditText.setText("");
         quantityEditText.setText("");
         itemPriceText.setText("");
     }

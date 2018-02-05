@@ -1,107 +1,79 @@
 <resources>
-    <string name="app_name">InventoryApp</string>
+    <string name="app_name">Nachos Store Inventory</string>
     <string name="title_activity_catalog">CatalogActivity</string>
 
-    <!-- Label for overview category of attributes in the editor [CHAR LIMIT=30] -->
-    <string name="category_item">Item Details</string>
 
-    <!-- Label for overview category of attributes in the editor [CHAR LIMIT=30] -->
-    <string name="category_size">Size</string>
+    <string name="plus">+</string>
 
-    <!-- Label for overview category of attributes in the editor [CHAR LIMIT=30] -->
-    <string name="category_handedness">Handedness</string>
+    <string name="minus">-</string>
 
-    <!--string for deleting all items  -->
-    <string name="delete_all_data">Delete all items</string>
+    <string name="items">Item Information</string>
 
-    <!--Text hint for item field in the editor [CHAR LIMIT=30] -->
-    <string name="hint_item_name">Item</string>
 
-    <!--Text hint for brand field in the editor [CHAR LIMIT=30] -->
-    <string name="hint_item_brand">Brand</string>
+    <string name="delete_all_items">Delete all items</string>
 
-    <!--Text hint for brand field in the editor [CHAR LIMIT=30] -->
-    <string name="hint_item_price">Price</string>
 
-    <!--Text hint for brand field in the editor [CHAR LIMIT=30] -->
-    <string name="hint_item_quantity">Quantity</string>
+    <string name="hint_itemname">Item Name</string>
 
-    <!-- Label for category for size Spinner [CHAR LIMIT=30] -->
-    <string name="size_universal">Universal</string>
 
-    <!-- Label for category for size Spinner [CHAR LIMIT=30] -->
-    <string name="size_adults">Adults</string>
+    <string name="hint_itemsupp">Supplier Name</string>
 
-    <!-- Label for category for size Spinner [CHAR LIMIT=30] -->
-    <string name="size_youths">Youths</string>
 
-    <!-- Label for category for the handedness Options [CHAR LIMIT=30] -->
-    <string name="handedness_ambidextrous">Ambidextrous</string>
+    <string name="hint_price">Price</string>
 
-    <!-- Label for category for the handedness Options [CHAR LIMIT=30] -->
-    <string name="handedness_right">Right</string>
 
-    <!-- Label for category for the handedness Options [CHAR LIMIT=30] -->
-    <string name="handedness_left">Left</string>
+    <string name="hint_quant">Quantity</string>
 
-    <!-- Menu button to delete item from database -->
-    <string name="action_delete">Delete</string>
 
-    <!-- Menu button to delete item from database -->
-    <string name="action_save">Save</string>
 
-    <!-- Dialog message  when the user is leaving editor but hasn't saved changes [CHAR LIMIT = NONE] -->
-    <string name="unsaved_changes_dialog_msg">Discard your changes and quit editing?</string>
-
-    <!-- Dialog button text for the option to discard a user's changes [CHAR LIMIT = 20] -->
-    <string name="discard">Discard</string>
-
-    <!-- Dialog button text for the option to keep editing the current pet [CHAR LIMIT = 20] -->
-    <string name="keep_editing">Keep Editing</string>
-
-    <!-- Label for adding a new item [ CHAR LIMIT = 30] -->
-    <string name="editor_activity_title_new_item">Add a new item</string>
-
-    <!-- Label for editing an existing item [ CHAR LIMIT = 30] -->
-    <string name="editor_activity_title_edit_an_item">Edit an item</string>
-
-    <!-- Label for confirming a successful item added to the database -->
-    <string name="editor_insert_item_successful">Item added successfully!</string>
-
-    <!-- Label for confirming an item added to the database has failed -->
-    <string name="editor_insert_item_failed">Failed to add item to the database</string>
-
-    <!-- Toast message that confirms the there has been a error in deleting the item [CHAR LIMIT = 30] -->
-    <string name="editor_delete_item_failed">Failed to delete item </string>
-
-    <!-- Toast message that confirms the succesful deletion of the item from the database [CHAR LIMIT = 30] -->
-    <string name="editor_delete_item_successful">Item deleted successfully</string>
-
-    <!-- Dialog message that confirms if you wish to delete the item from the database [CHAR LIMIT = 30] -->
-    <string name="delete_dialog_msg">Delete item?</string>
-
-    <!-- Dialog message button for delete -->
     <string name="delete">Delete</string>
 
-    <!-- Dialog message for cancel -->
-    <string name="cancel">Cancel</string>
 
-    <!-- Label for item name -->
-    <string name="item_name">Item: </string>
+    <string name="save">Save</string>
 
-    <!-- Label for item brand -->
-    <string name="item_brand">Brand: </string>
+    <string name="exit_no_save">You didn\'t save your item, do you want to exit?</string>
 
-    <!-- Label for item quantity -->
-    <string name="item_quantity">Quantity: </string>
 
-    <!-- Label for  item price -->
-    <string name="item_price">Price: </string>
+    <string name="discard">Discard</string>
 
-    <!-- Button text to increment -->
-    <string name="item_increment">+</string>
 
-    <!-- Button text to decrement -->
-    <string name="item_decrement">-</string>
+    <string name="no_exit"> Continue Edit</string>
+
+
+    <string name="add_new_item">Add new item</string>
+
+
+    <string name="editing_item">Edit item</string>
+
+
+    <string name="insert_item_succ">Item was added successfully!</string>
+
+
+    <string name="insert_item_failed">Failed to add an item to database</string>
+
+
+    <string name="delete_failed">Failed deleting item </string>
+
+
+    <string name="delete_succ">Item deleted successfully</string>
+
+
+    <string name="delete_item">Are you sure you want to delete this item?</string>
+
+
+    <string name="delete_butt">Delete</string>
+
+
+    <string name="cancel_butt">Cancel</string>
+
+
+    <string name="nachos_name">Nachos Name: </string>
+
+    <string name="supp">Supplier Name: </string>
+
+    <string name="quant">Quantity: </string>
+
+    <string name="price">Price: </string>
+
 
 </resources>

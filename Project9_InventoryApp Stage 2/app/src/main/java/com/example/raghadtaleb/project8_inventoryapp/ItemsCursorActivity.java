@@ -35,30 +35,31 @@ public class ItemsCursorActivity extends CursorAdapter {
     }
 
 
-//--------------------------------------------------
+//------------------------ bindView --------------------------
     @Override
     public void bindView(View view, Context context, Cursor cursor) {
-        TextView textNameView = view.findViewById(R.id.item_name);
-        TextView textBrandView = view.findViewById(R.id.item_brand);
-        TextView textPriceView =  view.findViewById(R.id.item_price);
-        TextView textQuantityView = view.findViewById(R.id.item_quantity);
 
-        //find the columns of item attributes that we're interested in
-        int nameColumnIndex = cursor.getColumnIndex(nachosEntry.COLUMN_NACHOS_NAME);
-        int brandColumnIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPPLIER);
-        int priceColumnIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
-        int quantityColumnIndex = cursor.getColumnIndex(nachosEntry.COLUMN_QUANTITY);
+        TextView nameView = view.findViewById(R.id.item_name);
+        TextView suppView = view.findViewById(R.id.item_supp);
+        TextView priceView =  view.findViewById(R.id.item_price);
+        TextView quantityView = view.findViewById(R.id.item_quantity);
 
-        //Read the item attributes from the Cursor for the current item
-        String itemName = cursor.getString(nameColumnIndex);
-        String itemBrand = cursor.getString(brandColumnIndex);
-        String itemPrice = cursor.getString(priceColumnIndex);
-        String itemQuantity = cursor.getString(quantityColumnIndex);
 
-        //Populate fields with extracted properties
-        textNameView.setText(itemName);
-        textBrandView.setText(itemBrand);
-        textPriceView.setText(itemPrice);
-        textQuantityView.setText(itemQuantity);
+        int nameIndex = cursor.getColumnIndex(nachosEntry.COLUMN_NACHOS_NAME);
+        int supplierIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPPLIER);
+        int quantityIndex = cursor.getColumnIndex(nachosEntry.COLUMN_QUANTITY);
+        int priceIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
+
+        String name = cursor.getString(nameIndex);
+        String supplier = cursor.getString(supplierIndex);
+        String  quant = cursor.getString(quantityIndex);
+        String price = cursor.getString(priceIndex);
+
+
+
+        nameView.setText(name);
+        suppView.setText(supplier);
+        priceView.setText(price);
+        quantityView.setText(quant);
     }
 }

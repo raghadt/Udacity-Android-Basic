@@ -20,12 +20,10 @@ import com.example.raghadtaleb.project8_inventoryapp.data.Contract.nachosEntry;
 public class Provider extends ContentProvider {
 
 
-    public static final String LOG_TAG = Provider.class.getSimpleName();
-
-
     private static final int ITEMS = 100;
-
     private static final int ITEM_ID = 101;
+
+    public static final String LOG_TAG = Provider.class.getSimpleName();
 
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
@@ -68,23 +66,6 @@ public class Provider extends ContentProvider {
         }
         cursor.setNotificationUri(getContext().getContentResolver(), uri);
 
-
-//        switch(matcher){
-//            case ITEMS:
-////                cursor = db.query(nachosEntry.TABLE_NAME, projection, selection, selectionArgs, null,null, sortOrder);
-//                break;
-//            case ITEM_ID:
-//                selection = nachosEntry._ID + "=?";
-//                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
-////                cursor = db.query(nachosEntry.TABLE_NAME, projection, selection, selectionArgs, null,null, sortOrder);
-//                break;
-//            default:
-//                throw new IllegalArgumentException("Querying this URI has failed");
-//
-//        }
-//        cursor.setNotificationUri(getContext().getContentResolver(), uri);
-
-
         return cursor;
     }
 
@@ -105,7 +86,6 @@ public class Provider extends ContentProvider {
 
     //------------------------------ INSERT ------------------------------
 
-
     @Nullable
     @Override
     public Uri insert(Uri uri, ContentValues contentValues) {
@@ -123,9 +103,8 @@ public class Provider extends ContentProvider {
         String itemName = contentValues.getAsString(nachosEntry.COLUMN_NACHOS_NAME);
         String suppName = contentValues.getAsString(nachosEntry.COLUMN_SUPPLIER);
         String price = contentValues.getAsString(nachosEntry.COLUMN_PRICE);
-        String quantity = contentValues.getAsString(nachosEntry.COLUMN_QUANTITY);
-        String supPhone = contentValues.getAsString(nachosEntry.COLUMN_SUPER_PHONE);
-        String supEmail = contentValues.getAsString(nachosEntry.COLUMN_SUPP_EMAIL);
+        Long insertRow;
+
 
         if (itemName == null) {
             throw new IllegalArgumentException("You must provide a name for this item");
@@ -138,41 +117,39 @@ public class Provider extends ContentProvider {
         }
 
         SQLiteDatabase db = dBHelper.getWritableDatabase();
-        Long id = db.insert(nachosEntry.TABLE_NAME, null, contentValues);
+        insertRow = db.insert(nachosEntry.TABLE_NAME, null, contentValues);
 
-        if (id == -1) {
+        if (insertRow == -1) {
             Log.e(LOG_TAG, "Row insertion failed " + uri);
             return null;
         }
 
-
         getContext().getContentResolver().notifyChange(uri, null);
 
-        return ContentUris.withAppendedId(uri, id);
+        return ContentUris.withAppendedId(uri, insertRow);
     }
 
     //------------------------------ DELETE ------------------------------
 
 
     @Override
-    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public int delete(@NonNull Uri uri, @Nullable String selection, @Nullable String[] sArgs) {
         SQLiteDatabase db = dBHelper.getWritableDatabase();
         final int matcher = sUriMatcher.match(uri);
         int rowsDeleted;
 
         switch (matcher) {
             case ITEMS:
-                rowsDeleted = db.delete(nachosEntry.TABLE_NAME, selection, selectionArgs);
+                rowsDeleted = db.delete(nachosEntry.TABLE_NAME, selection, sArgs);
                 break;
             case ITEM_ID:
                 selection = nachosEntry._ID + "=?";
-                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
-                rowsDeleted = db.delete(nachosEntry.TABLE_NAME, selection, selectionArgs);
+                sArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                rowsDeleted = db.delete(nachosEntry.TABLE_NAME, selection, sArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Deletion is not supported for " + uri);
         }
-
 
         if (rowsDeleted != 0) {
             getContext().getContentResolver().notifyChange(uri, null);
@@ -184,47 +161,55 @@ public class Provider extends ContentProvider {
 
     //------------------------------ UPDAET ------------------------------
     @Override
-    public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] selectionArgs) {
+    public int update(@NonNull Uri uri, @Nullable ContentValues contentValues, @Nullable String selection, @Nullable String[] sArgs) {
         final int matcher = sUriMatcher.match(uri);
+
 
         switch (matcher) {
             case ITEMS:
-                return updateItem(uri, contentValues, selection, selectionArgs);
+                return updateItem(uri, contentValues, selection, sArgs);
 
             case ITEM_ID:
                 selection = nachosEntry._ID + "=?";
-                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
-                return updateItem(uri, contentValues, selection, selectionArgs);
+                sArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                return updateItem(uri, contentValues, selection, sArgs);
+
             default:
                 throw new IllegalArgumentException("Can't perform update " + uri);
-
         }
+
     }
 
 
-    private int updateItem(Uri uri, ContentValues contentValues, String selection, String[] selectionArgs) {
-        if (contentValues.containsKey(nachosEntry.COLUMN_NACHOS_NAME)) {
+    private int updateItem(Uri uri, ContentValues contentValues, String selection, String[] sArgs) {
+
+        SQLiteDatabase database = dBHelper.getWritableDatabase();
+        Boolean check = contentValues.containsKey(nachosEntry.COLUMN_NACHOS_NAME);
+
+        if (check) {
             String name = contentValues.getAsString(nachosEntry.COLUMN_NACHOS_NAME);
             if (name == null) {
                 throw new IllegalArgumentException("Item requires a description");
             }
         }
-
-        if (contentValues.containsKey(nachosEntry.COLUMN_SUPPLIER)) {
-            String brand = contentValues.getAsString(nachosEntry.COLUMN_SUPPLIER);
-            if (brand == null) {
-                throw new IllegalArgumentException("Item requires a brand");
+        check = contentValues.containsKey(nachosEntry.COLUMN_SUPPLIER);
+        if (check) {
+            String supp = contentValues.getAsString(nachosEntry.COLUMN_SUPPLIER);
+            if (supp == null) {
+                throw new IllegalArgumentException("Item requires a supplier");
             }
         }
 
-        if (contentValues.containsKey(nachosEntry.COLUMN_PRICE)) {
+        check = contentValues.containsKey(nachosEntry.COLUMN_PRICE);
+        if (check) {
             Integer price = contentValues.getAsInteger(nachosEntry.COLUMN_PRICE);
             if (price != null && price < 0) {
                 throw new IllegalArgumentException("Item requires a price");
             }
         }
 
-        if (contentValues.containsKey(nachosEntry.COLUMN_QUANTITY)) {
+        check = contentValues.containsKey(nachosEntry.COLUMN_QUANTITY);
+        if (check) {
             Integer quantity = contentValues.getAsInteger(nachosEntry.COLUMN_QUANTITY);
             if (quantity != null && quantity < 0) {
                 throw new IllegalArgumentException("Item requires a quantity");
@@ -235,9 +220,8 @@ public class Provider extends ContentProvider {
             return 0;
         }
 
-        SQLiteDatabase database = dBHelper.getWritableDatabase();
 
-        int rowsUpdated = database.update(nachosEntry.TABLE_NAME, contentValues, selection, selectionArgs);
+        int rowsUpdated = database.update(nachosEntry.TABLE_NAME, contentValues, selection, sArgs);
 
         if (rowsUpdated != 0) {
             getContext().getContentResolver().notifyChange(uri, null);

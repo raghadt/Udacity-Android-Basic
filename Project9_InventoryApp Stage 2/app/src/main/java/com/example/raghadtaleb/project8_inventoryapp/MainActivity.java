@@ -2,7 +2,6 @@ package com.example.raghadtaleb.project8_inventoryapp;
 
 import android.app.LoaderManager;
 import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -19,14 +18,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
-
 
 import com.example.raghadtaleb.project8_inventoryapp.data.Contract;
-import com.example.raghadtaleb.project8_inventoryapp.data.DbHelper;
 import com.example.raghadtaleb.project8_inventoryapp.data.Contract.nachosEntry;
+import com.example.raghadtaleb.project8_inventoryapp.data.DbHelper;
 
-public class MainActivity extends  AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor>{
+public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     DbHelper helper;
 
@@ -38,58 +35,47 @@ public class MainActivity extends  AppCompatActivity implements LoaderManager.Lo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Nachos Store Inventory");
+        getSupportActionBar().setTitle(getString(R.string.app_name));
 
         helper = new DbHelper(this);
 
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton floatin = findViewById(R.id.floatin);
+        floatin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent (MainActivity.this, EditorsActivity.class);
+                Intent intent = new Intent(MainActivity.this, EditorsActivity.class);
                 startActivity(intent);
             }
         });
 
-        ListView itemlistView = (ListView) findViewById(R.id.list);
+        ListView itemlistView = findViewById(R.id.list);
 
 
-        //initialise ItemCursorAdapter and set this to accept the listview
         cursorAdapter = new ItemsCursorActivity(this, null);
         itemlistView.setAdapter(cursorAdapter);
 
-        //setup onlickListener
+
         itemlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Intent intent = new Intent (MainActivity.this, EditorsActivity.class);
-
-
+                Intent intent = new Intent(MainActivity.this, EditorsActivity.class);
                 Uri currentItemUri = ContentUris.withAppendedId(nachosEntry.CONTENT_URI, id);
-
-
                 intent.setData(currentItemUri);
-
-
                 startActivity(intent);
             }
         });
 
-        //start the loader
+
         getLoaderManager().initLoader(ITEM_LOADER, null, this);
-
-
     }
 
 
-
-    private void deleteAllItems(){
-        int rowsDeleted = getContentResolver().delete(nachosEntry.CONTENT_URI, null, null);
-        Log.v("CatalogActivity", rowsDeleted + "rows deleted from cricket database");
+    private void deleteAllItems() {
+        int deletedRows = getContentResolver().delete(nachosEntry.CONTENT_URI, null, null);
+        Log.v("MainActivity", deletedRows + " ---------- deleted rows ");
 
     }
 
@@ -101,7 +87,7 @@ public class MainActivity extends  AppCompatActivity implements LoaderManager.Lo
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_delete_all_data:
                 deleteAllItems();
                 return true;
@@ -118,7 +104,7 @@ public class MainActivity extends  AppCompatActivity implements LoaderManager.Lo
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {
-        String [] colum = {
+        String[] colum = {
                 nachosEntry._ID,
                 nachosEntry.COLUMN_NACHOS_NAME,
                 nachosEntry.COLUMN_SUPPLIER,
@@ -126,12 +112,12 @@ public class MainActivity extends  AppCompatActivity implements LoaderManager.Lo
                 nachosEntry.COLUMN_PRICE,
         };
 
-        return new CursorLoader(this, nachosEntry.CONTENT_URI, colum, null,null,null);
+        return new CursorLoader(this, nachosEntry.CONTENT_URI, colum, null, null, null);
     }
 
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
-cursorAdapter.swapCursor(cursor);
+        cursorAdapter.swapCursor(cursor);
     }
 
     @Override
