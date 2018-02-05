@@ -9,10 +9,8 @@ import android.provider.BaseColumns;
  */
 
 public class Contract {
-    //    The contract contains at minimum constants for the product name, price, quantity, image, supplier name, supplier email, and supplier phone number.
 
-
-    public static final String CONTENT_AUTHORITY = "com.example.android.project8_inventoryapp";
+    public static final String CONTENT_AUTHORITY = "com.example.raghadtaleb.project8_inventoryapp";
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
     public static final String PATH = "nachos";
 

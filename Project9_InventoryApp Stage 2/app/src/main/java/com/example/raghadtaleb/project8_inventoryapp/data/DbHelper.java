@@ -35,8 +35,6 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         db.execSQL(SQL_CREATE_NACHOS_TABLE);
-
-
     }
 
     @Override

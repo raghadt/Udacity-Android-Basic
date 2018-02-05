@@ -22,7 +22,7 @@ public class ItemsCursorActivity extends CursorAdapter {
     }
 
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout., parent, false);
+        return LayoutInflater.from(context).inflate(R.layout.list_items, parent, false);
     }
 
 
