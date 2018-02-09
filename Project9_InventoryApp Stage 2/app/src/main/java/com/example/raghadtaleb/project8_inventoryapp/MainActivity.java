@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.example.raghadtaleb.project8_inventoryapp.data.Contract;
@@ -28,12 +29,18 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     DbHelper helper;
 
     ItemsCursorActivity cursorAdapter;
+    private Button sell;
+    final static EditorsActivity editorsActivity = new EditorsActivity();
+
     private static final int ITEM_LOADER = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_main);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -51,8 +58,10 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
             }
         });
 
-        ListView itemlistView = findViewById(R.id.list);
 
+        ListView itemlistView = findViewById(R.id.list);
+        View emptyView = findViewById(R.id.empty_view);
+        itemlistView.setEmptyView(emptyView);
 
         cursorAdapter = new ItemsCursorActivity(this, null);
         itemlistView.setAdapter(cursorAdapter);
@@ -61,13 +70,13 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         itemlistView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(MainActivity.this, EditorsActivity.class);
+                Intent intent = new Intent(MainActivity.this, DetailsActivity.class);
                 Uri currentItemUri = ContentUris.withAppendedId(nachosEntry.CONTENT_URI, id);
                 intent.setData(currentItemUri);
                 startActivity(intent);
+
             }
         });
-
 
         getLoaderManager().initLoader(ITEM_LOADER, null, this);
     }

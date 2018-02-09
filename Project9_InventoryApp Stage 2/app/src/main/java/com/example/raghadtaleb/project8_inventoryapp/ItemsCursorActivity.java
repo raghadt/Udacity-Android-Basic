@@ -1,14 +1,20 @@
 package com.example.raghadtaleb.project8_inventoryapp;
 
+import android.content.ContentUris;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.net.Uri;
 import android.support.v4.widget.CursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.raghadtaleb.project8_inventoryapp.data.Contract.nachosEntry;
 
 /**
@@ -37,12 +43,13 @@ public class ItemsCursorActivity extends CursorAdapter {
 
 //------------------------ bindView --------------------------
     @Override
-    public void bindView(View view, Context context, Cursor cursor) {
+    public void bindView(View view, final Context context, Cursor cursor) {
 
         TextView nameView = view.findViewById(R.id.item_name);
         TextView suppView = view.findViewById(R.id.item_supp);
         TextView priceView =  view.findViewById(R.id.item_price);
-        TextView quantityView = view.findViewById(R.id.item_quantity);
+        final TextView quantityView = view.findViewById(R.id.item_quantity);
+        Button saleBtn = view.findViewById(R.id.sell);
 
 
         int nameIndex = cursor.getColumnIndex(nachosEntry.COLUMN_NACHOS_NAME);
@@ -61,5 +68,33 @@ public class ItemsCursorActivity extends CursorAdapter {
         suppView.setText(supplier);
         priceView.setText(price);
         quantityView.setText(quant);
+
+
+
+
+
+        int index = cursor.getColumnIndex(nachosEntry._ID);
+        int id = cursor.getInt(index);
+        final Uri currentBookUri = ContentUris.withAppendedId(nachosEntry.CONTENT_URI, id);
+
+        saleBtn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                int quantity = Integer.parseInt(quantityView.getText().toString());
+                if (quantity > 0) {
+                    quantityView.setText("" + (--quantity));
+                    ContentValues values = new ContentValues();
+                    values.put(nachosEntry.COLUMN_QUANTITY, quantity);
+                    context.getContentResolver().update(currentBookUri, values, null, null);
+                } else {
+                    Toast.makeText(context, context.getString(R.string.out_of_stocks),
+                            Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
+
+
+
     }
 }

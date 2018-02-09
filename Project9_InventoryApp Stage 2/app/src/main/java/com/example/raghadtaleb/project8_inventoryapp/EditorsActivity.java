@@ -38,6 +38,9 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
     private EditText suppEditText;
     private EditText quantityEditText;
     private EditText itemPriceText;
+    private EditText suppPhone;
+    private EditText suppEmail;
+
 
     private Button quantityIncrement;
     private Button quantityDecrement;
@@ -81,6 +84,8 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         quantityDecrement =  findViewById(R.id.decQuant);
         priceIncrement = findViewById(R.id.incPRICE);
         priceDecrement = findViewById(R.id.decPRICE);
+        suppPhone = findViewById(R.id.edit_phone);
+        suppEmail = findViewById(R.id.edit_mail);
 
 
         itemEditText.setOnTouchListener(touchListener);
@@ -126,7 +131,7 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
     //----------------------- Decrement Amount ---------------------
 
 
-    private void decAmount() {
+    public void decAmount() {
         String prevValueString = quantityEditText.getText().toString();
 
         if (prevValueString.isEmpty()) {
@@ -161,7 +166,7 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
 
         if (preValueString.isEmpty()) {
             return;
-        } else if (preValueString.equals("0")) {
+        } else if (preValueString.equals("0") || preValueString.contains("-") ) {
             return;
         } else {
             int previousValue = Integer.parseInt(preValueString);
@@ -192,19 +197,57 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         int price = 0;
         int quantity = 0;
         int changedRows;
+        int phone =0;
+        String email="";
 
         String itemString = itemEditText.getText().toString().trim();
         String suppString = suppEditText.getText().toString().trim();
         String priceString = itemPriceText.getText().toString().trim();
         String quantityString = quantityEditText.getText().toString().trim();
+        String suppPhoneString = suppPhone.getText().toString().trim();
+        String suppEmailString = suppEmail.getText().toString().trim();
 
 
         if (currentItemUri == null &&
-                TextUtils.isEmpty(itemString) && TextUtils.isEmpty(suppString) && TextUtils.isEmpty(priceString)
-                && TextUtils.isEmpty(quantityString)){
+                TextUtils.isEmpty(itemString) && TextUtils.isEmpty(suppString)
+             ){
+
+            Toast.makeText(this, getString(R.string.insert_item_failed),
+                    Toast.LENGTH_SHORT).show();
 
             return;
         }
+
+        if(TextUtils.isEmpty(itemString)){
+            Toast.makeText(this, getString(R.string.insert_item_failed),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if(!TextUtils.isEmpty(priceString)){
+            price = Integer.parseInt(priceString);
+        } else {
+            Toast.makeText(this, getString(R.string.insert_item_failed),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!TextUtils.isEmpty(quantityString)){
+            quantity = Integer.parseInt(quantityString);
+        } else {
+            Toast.makeText(this, getString(R.string.insert_item_failed),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!TextUtils.isEmpty(suppPhoneString)){
+            phone = Integer.parseInt(suppPhoneString);
+        } else {
+            Toast.makeText(this, getString(R.string.insert_item_failed),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
 
 
         ContentValues contentValues = new ContentValues();
@@ -212,20 +255,18 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         contentValues.put(nachosEntry.COLUMN_SUPPLIER, suppString);
         contentValues.put(nachosEntry.COLUMN_PRICE, priceString);
         contentValues.put(nachosEntry.COLUMN_QUANTITY, quantityString);
+        contentValues.put(nachosEntry.COLUMN_SUPP_EMAIL, suppEmailString);
 
 
-        if(!TextUtils.isEmpty(priceString)){
-            price = Integer.parseInt(priceString);
-        }
 
-        if (!TextUtils.isEmpty(quantityString)){
-            quantity = Integer.parseInt(quantityString);
-        }
+
 
         contentValues.put(nachosEntry.COLUMN_PRICE, price);
         contentValues.put(nachosEntry.COLUMN_QUANTITY, quantity);
+        contentValues.put(nachosEntry.COLUMN_SUPER_PHONE, phone);
 
-    if (currentItemUri == null){
+
+        if (currentItemUri == null){
 
             Uri newUri = getContentResolver().insert(nachosEntry.CONTENT_URI, contentValues);
             if (newUri == null) {

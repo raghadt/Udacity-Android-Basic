@@ -21,6 +21,8 @@
         </activity>
 
         <activity android:name=".EditorsActivity" />
+        <activity android:name=".DetailsActivity" />
+
 
         <provider
             android:name=".data.Provider"

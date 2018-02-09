@@ -5,6 +5,12 @@
 
     <string name="plus">+</string>
 
+
+    <string name="no_nachos">No Nachos :(</string>
+    <string name="sell">Sell</string>
+    <string name="out_of_stocks">Sorry, this item is out of stock</string>
+
+
     <string name="minus">-</string>
 
     <string name="items">Item Information</string>
@@ -14,6 +20,10 @@
 
 
     <string name="hint_itemname">Item Name</string>
+
+    <string name="supp_phone">Supplier Phone number</string>
+
+    <string name="supp_email">Supplier Email</string>
 
 
     <string name="hint_itemsupp">Supplier Name</string>
