@@ -22,6 +22,7 @@
 
         <activity android:name=".EditorsActivity" />
         <activity android:name=".DetailsActivity" />
+        <activity android:name=".AddActivity" />
 
 
         <provider

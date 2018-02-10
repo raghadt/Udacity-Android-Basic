@@ -25,10 +25,10 @@ import android.widget.Toast;
 import com.example.raghadtaleb.project8_inventoryapp.data.Contract.nachosEntry;
 
 /**
- * Created by raghadtaleb on 02/02/2018.
+ * Created by raghadtaleb on 10/02/2018.
  */
 
-public class EditorsActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
+public class AddActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     private static final int EXISTING_ITEM_LOADER = 0;
 
@@ -315,7 +315,7 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
 
             case android.R.id.home:
                 if (!changedItem) {
-                    NavUtils.navigateUpFromSameTask(EditorsActivity.this);
+                    NavUtils.navigateUpFromSameTask(AddActivity.this);
                     return true;
                 }
 
@@ -324,7 +324,7 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
-                                NavUtils.navigateUpFromSameTask(EditorsActivity.this);
+                                NavUtils.navigateUpFromSameTask(AddActivity.this);
                             }
                         };
 

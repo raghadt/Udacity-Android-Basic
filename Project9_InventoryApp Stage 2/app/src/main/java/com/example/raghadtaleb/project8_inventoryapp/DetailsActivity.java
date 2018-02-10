@@ -1,6 +1,7 @@
 package com.example.raghadtaleb.project8_inventoryapp;
 
 import android.app.LoaderManager;
+import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -41,6 +42,8 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
 
     private Button call;
     private Button mail;
+    private Button increase;
+    private Button decrease;
 
 
     private boolean changedItem = false;
@@ -82,6 +85,23 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
 
         call = findViewById(R.id.call);
         mail = findViewById(R.id.email);
+        increase = findViewById(R.id.increase_button);
+        decrease = findViewById(R.id.decrease_button);
+
+
+        increase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                increment();
+            }
+        });
+
+        decrease.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                decrement();
+            }
+        });
 
 
         mail.setOnClickListener(new View.OnClickListener() {
@@ -108,12 +128,47 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
                 Intent intent = new Intent(Intent.ACTION_DIAL);
                 intent.setData(Uri.parse("tel:" + suppPhoneText.getText().toString()));
                 startActivity(intent);
-
-
-
             }
         });
 
+    }
+
+    private void increment() {
+
+        String quantityString = quantityTextView.getText().toString().trim();
+
+
+        int quant = Integer.parseInt(quantityString);
+        quant = quant + 1;
+
+        ContentValues values = new ContentValues();
+        values.put(nachosEntry.COLUMN_QUANTITY, quant);
+
+        int rowsAffected = getContentResolver().update(currentItemUri, values,
+                null, null);
+    }
+
+
+    private void decrement() {
+        String quantityString = quantityTextView.getText().toString().trim();
+
+
+        int quant = Integer.parseInt(quantityString);
+
+        if (quant > 0) {
+            quant = quant - 1;
+        } else if (quant == 0) {
+            Toast.makeText(DetailsActivity.this, getString(R.string.zero_error),
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        ContentValues values = new ContentValues();
+
+        values.put(nachosEntry.COLUMN_QUANTITY, quant);
+
+
+        int rowsAffected = getContentResolver().update(currentItemUri, values,
+                null, null);
     }
 
 
@@ -121,7 +176,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-//        return super.onCreateOptionsMenu(menu);
         getMenuInflater().inflate(R.menu.menu_edit, menu);
         return true;
     }

@@ -26,13 +26,11 @@ import com.example.raghadtaleb.project8_inventoryapp.data.DbHelper;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
+    final static EditorsActivity editorsActivity = new EditorsActivity();
+    private static final int ITEM_LOADER = 0;
     DbHelper helper;
-
     ItemsCursorActivity cursorAdapter;
     private Button sell;
-    final static EditorsActivity editorsActivity = new EditorsActivity();
-
-    private static final int ITEM_LOADER = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         floatin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, EditorsActivity.class);
+                Intent intent = new Intent(MainActivity.this, AddActivity.class);
                 startActivity(intent);
             }
         });

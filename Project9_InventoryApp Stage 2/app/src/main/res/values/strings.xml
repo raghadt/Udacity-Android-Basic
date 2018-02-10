@@ -35,13 +35,15 @@
     <string name="hint_quant">Quantity</string>
 
 
-
     <string name="delete">Delete</string>
 
 
     <string name="save">Save</string>
 
     <string name="exit_no_save">You didn\'t save your item, do you want to exit?</string>
+    <string name="correct_info">You must enter information correctly before you continue </string>
+
+    <string name="zero_error">You cannot enter a number below zero</string>
 
 
     <string name="discard">Discard</string>

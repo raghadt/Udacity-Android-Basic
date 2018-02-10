@@ -20,11 +20,9 @@ import com.example.raghadtaleb.project8_inventoryapp.data.Contract.nachosEntry;
 public class Provider extends ContentProvider {
 
 
+    public static final String LOG_TAG = Provider.class.getSimpleName();
     private static final int ITEMS = 100;
     private static final int ITEM_ID = 101;
-
-    public static final String LOG_TAG = Provider.class.getSimpleName();
-
     private static final UriMatcher sUriMatcher = new UriMatcher(UriMatcher.NO_MATCH);
 
     static {

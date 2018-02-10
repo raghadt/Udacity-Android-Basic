@@ -30,41 +30,42 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-            <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hint_itemname"
-                android:textSize="16sp" />
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_itemname"
+                    android:textSize="16sp" />
 
 
-            <TextView
-                android:id="@+id/edit_itemname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hint_itemname"
-                android:layout_marginLeft="10dp"
-                />
+                <TextView
+                    android:id="@+id/edit_itemname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/hint_itemname" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-            <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hint_itemsupp"
-                android:textSize="16sp" />
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/hint_itemsupp"
+                    android:textSize="16sp" />
 
 
-            <TextView
-                android:id="@+id/edit_suppname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/hint_itemsupp"
-                android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:id="@+id/edit_suppname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:text="@string/hint_itemsupp" />
             </LinearLayout>
 
 
@@ -100,9 +101,20 @@
                     android:id="@+id/edit_quant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/hint_quant"
                     android:layout_marginLeft="10dp"
-                    />
+                    android:text="@string/hint_quant" />
+
+                <Button
+                    android:id="@+id/increase_button"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/plus" />
+
+                <Button
+                    android:id="@+id/decrease_button"
+                    android:layout_width="50dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minus" />
 
             </LinearLayout>
 
@@ -121,9 +133,8 @@
                     android:id="@+id/edit_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/supp_phone"
                     android:layout_marginLeft="10dp"
-                    />
+                    android:text="@string/supp_phone" />
 
             </LinearLayout>
 
@@ -141,33 +152,29 @@
                     android:id="@+id/edit_mail"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/supp_email"
                     android:layout_marginLeft="10dp"
-                    />
+                    android:text="@string/supp_email" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                >
+                android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/call"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Call"
-                    />
+                    android:text="Call" />
 
                 <Button
                     android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Email"
-                    />
+                    android:text="Email" />
 
 
             </LinearLayout>

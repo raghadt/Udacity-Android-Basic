@@ -10,8 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,27 +25,26 @@ public class ItemsCursorActivity extends CursorAdapter {
         super(context, c, 0);
     }
 
-    public View newView(Context context, Cursor cursor, ViewGroup parent) {
-        return LayoutInflater.from(context).inflate(R.layout.list_items, parent, false);
-    }
-
-
     public ItemsCursorActivity(Context context, Cursor c, boolean autoRequery) {
         super(context, c, autoRequery);
     }
+
 
     public ItemsCursorActivity(Context context, Cursor c, int flags) {
         super(context, c, flags);
     }
 
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        return LayoutInflater.from(context).inflate(R.layout.list_items, parent, false);
+    }
 
-//------------------------ bindView --------------------------
+    //------------------------ bindView --------------------------
     @Override
     public void bindView(View view, final Context context, Cursor cursor) {
 
         TextView nameView = view.findViewById(R.id.item_name);
         TextView suppView = view.findViewById(R.id.item_supp);
-        TextView priceView =  view.findViewById(R.id.item_price);
+        TextView priceView = view.findViewById(R.id.item_price);
         final TextView quantityView = view.findViewById(R.id.item_quantity);
         Button saleBtn = view.findViewById(R.id.sell);
 
@@ -59,18 +56,14 @@ public class ItemsCursorActivity extends CursorAdapter {
 
         String name = cursor.getString(nameIndex);
         String supplier = cursor.getString(supplierIndex);
-        String  quant = cursor.getString(quantityIndex);
+        String quant = cursor.getString(quantityIndex);
         String price = cursor.getString(priceIndex);
-
 
 
         nameView.setText(name);
         suppView.setText(supplier);
         priceView.setText(price);
         quantityView.setText(quant);
-
-
-
 
 
         int index = cursor.getColumnIndex(nachosEntry._ID);
@@ -92,8 +85,6 @@ public class ItemsCursorActivity extends CursorAdapter {
 
             }
         });
-
-
 
 
     }

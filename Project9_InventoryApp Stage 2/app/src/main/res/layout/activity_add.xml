@@ -7,13 +7,12 @@
     tools:context="com.example.raghadtaleb.project8_inventoryapp.EditorsActivity">
 
 
-
     <TextView
-        android:text="@string/items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24sp"
-        />
+        android:text="@string/items"
+        android:textSize="24sp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -23,40 +22,36 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
-            android:paddingLeft="4dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingLeft="4dp">
 
             <EditText
                 android:id="@+id/edit_itemname"
-                android:hint="@string/hint_itemname"
-                android:inputType="textCapWords"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
+                android:hint="@string/hint_itemname"
+                android:inputType="textCapWords" />
 
 
             <EditText
                 android:id="@+id/edit_suppname"
-                android:hint="@string/hint_itemsupp"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_itemsupp" />
 
             <EditText
                 android:id="@+id/edit_phone"
-                android:hint="@string/supp_phone"
-                android:inputType="textCapWords"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
+                android:hint="@string/supp_phone"
+                android:inputType="textCapWords" />
 
             <EditText
                 android:id="@+id/edit_mail"
-                android:hint="@string/supp_email"
-                android:inputType="textCapWords"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                />
-
+                android:hint="@string/supp_email"
+                android:inputType="textCapWords" />
 
 
             <LinearLayout
@@ -69,25 +64,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/minus"
-                    android:textColor="@color/colorAccent"
-                    />
+                    android:textColor="@color/colorAccent" />
 
 
                 <EditText
                     android:id="@+id/edit_price"
-                    android:hint="@string/hint_price"
-                    android:inputType="textCapWords"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" />
+                    android:layout_weight="1"
+                    android:hint="@string/hint_price"
+                    android:inputType="textCapWords" />
 
                 <Button
                     android:id="@+id/incPRICE"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/plus"
-                    android:textColor="@color/colorAccent"
-                    />
+                    android:textColor="@color/colorAccent" />
 
             </LinearLayout>
 
@@ -101,25 +94,23 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/minus"
-                    android:textColor="@color/colorAccent"
-                    />
+                    android:textColor="@color/colorAccent" />
 
 
                 <EditText
                     android:id="@+id/edit_quant"
-                    android:hint="@string/hint_quant"
-                    android:inputType="textCapWords"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:hint="@string/hint_quant"
+                    android:inputType="textCapWords" />
 
                 <Button
                     android:id="@+id/incQuant"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/plus"
-                    android:textColor="@color/colorAccent"
-                    />
+                    android:textColor="@color/colorAccent" />
             </LinearLayout>
 
         </LinearLayout>
