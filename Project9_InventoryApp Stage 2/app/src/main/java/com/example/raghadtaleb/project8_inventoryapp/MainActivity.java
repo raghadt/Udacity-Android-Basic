@@ -6,7 +6,6 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -17,20 +16,17 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.raghadtaleb.project8_inventoryapp.data.Contract;
 import com.example.raghadtaleb.project8_inventoryapp.data.Contract.nachosEntry;
 import com.example.raghadtaleb.project8_inventoryapp.data.DbHelper;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
-    final static EditorsActivity editorsActivity = new EditorsActivity();
     private static final int ITEM_LOADER = 0;
     DbHelper helper;
     ItemsCursorActivity cursorAdapter;
-    private Button sell;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,12 +98,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         return super.onOptionsItemSelected(item);
     }
 
-
-    private Cursor readDb() {
-        SQLiteDatabase database = helper.getReadableDatabase();
-        String[] project = {Contract.nachosEntry._ID, Contract.nachosEntry.COLUMN_NACHOS_NAME, Contract.nachosEntry.COLUMN_QUANTITY};
-        return database.query(Contract.nachosEntry.TABLE_NAME, project, null, null, null, null, null);
-    }
 
     @Override
     public Loader<Cursor> onCreateLoader(int i, Bundle bundle) {

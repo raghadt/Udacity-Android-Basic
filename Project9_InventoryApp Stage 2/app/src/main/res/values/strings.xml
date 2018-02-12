@@ -6,7 +6,7 @@
     <string name="plus">+</string>
 
 
-    <string name="no_nachos">No Nachos :(</string>
+    <string name="no_nachos">No Nachos :( Click plus button to add items</string>
     <string name="sell">Sell</string>
     <string name="out_of_stocks">Sorry, this item is out of stock</string>
 

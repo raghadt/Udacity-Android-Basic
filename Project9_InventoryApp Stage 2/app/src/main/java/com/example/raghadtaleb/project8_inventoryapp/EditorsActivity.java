@@ -224,6 +224,12 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
             return;
         }
 
+        if (TextUtils.isEmpty(suppEmailString)) {
+            Toast.makeText(this, getString(R.string.correct_info),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (!TextUtils.isEmpty(priceString)) {
             price = Integer.parseInt(priceString);
         } else {
@@ -255,7 +261,6 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         contentValues.put(nachosEntry.COLUMN_PRICE, priceString);
         contentValues.put(nachosEntry.COLUMN_QUANTITY, quantityString);
         contentValues.put(nachosEntry.COLUMN_SUPP_EMAIL, suppEmailString);
-
 
         contentValues.put(nachosEntry.COLUMN_PRICE, price);
         contentValues.put(nachosEntry.COLUMN_QUANTITY, quantity);
@@ -327,7 +332,6 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
                                 NavUtils.navigateUpFromSameTask(EditorsActivity.this);
                             }
                         };
-
                 showUnsavedChangesDialog(discardButtonClickListener);
                 return true;
         }
@@ -353,7 +357,6 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
 
 
     private void showDeleteConfirmationDialog() {
-
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage(R.string.delete_item);
         builder.setPositiveButton(R.string.delete_butt, new DialogInterface.OnClickListener() {
@@ -417,6 +420,9 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
                 nachosEntry.COLUMN_SUPPLIER,
                 nachosEntry.COLUMN_QUANTITY,
                 nachosEntry.COLUMN_PRICE,
+                nachosEntry.COLUMN_SUPER_PHONE,
+                nachosEntry.COLUMN_SUPP_EMAIL,
+
 
         };
 
@@ -436,16 +442,24 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
             int supplierIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPPLIER);
             int quantityIndex = cursor.getColumnIndex(nachosEntry.COLUMN_QUANTITY);
             int priceIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
+            int suppPhoneNumberIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPER_PHONE);
+            int suppEmailIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPP_EMAIL);
 
             String name = cursor.getString(nameIndex);
             String supplier = cursor.getString(supplierIndex);
             int quant = cursor.getInt(quantityIndex);
             int price = cursor.getInt(priceIndex);
+            int phoneNumber = cursor.getInt(suppPhoneNumberIndex);
+            String email = cursor.getString(suppEmailIndex);
 
             itemEditText.setText(name);
             suppEditText.setText(supplier);
             quantityEditText.setText(Integer.toString(quant));
             itemPriceText.setText(Integer.toString(price));
+            suppPhone.setText(Integer.toString(phoneNumber));
+            suppEmail.setText(email);
+
+
         }
     }
 
@@ -456,6 +470,8 @@ public class EditorsActivity extends AppCompatActivity implements LoaderManager.
         suppEditText.setText("");
         quantityEditText.setText("");
         itemPriceText.setText("");
+        suppPhone.setText("");
+        suppEmail.setText("");
     }
 
     @Override

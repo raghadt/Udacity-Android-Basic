@@ -224,6 +224,12 @@ public class AddActivity extends AppCompatActivity implements LoaderManager.Load
             return;
         }
 
+        if (TextUtils.isEmpty(suppEmailString)) {
+            Toast.makeText(this, getString(R.string.correct_info),
+                    Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (!TextUtils.isEmpty(priceString)) {
             price = Integer.parseInt(priceString);
         } else {
@@ -431,21 +437,26 @@ public class AddActivity extends AppCompatActivity implements LoaderManager.Load
     @Override
     public void onLoadFinished(Loader<Cursor> loader, Cursor cursor) {
         if (cursor.moveToFirst()) {
-
             int nameIndex = cursor.getColumnIndex(nachosEntry.COLUMN_NACHOS_NAME);
             int supplierIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPPLIER);
             int quantityIndex = cursor.getColumnIndex(nachosEntry.COLUMN_QUANTITY);
             int priceIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
+            int suppPhoneNumberIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPER_PHONE);
+            int suppEmailIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPP_EMAIL);
 
             String name = cursor.getString(nameIndex);
             String supplier = cursor.getString(supplierIndex);
             int quant = cursor.getInt(quantityIndex);
             int price = cursor.getInt(priceIndex);
+            int phoneNumber = cursor.getInt(suppPhoneNumberIndex);
+            String email = cursor.getString(suppEmailIndex);
 
             itemEditText.setText(name);
             suppEditText.setText(supplier);
             quantityEditText.setText(Integer.toString(quant));
             itemPriceText.setText(Integer.toString(price));
+            suppPhone.setText(Integer.toString(phoneNumber));
+            suppEmail.setText(email);
         }
     }
 
@@ -456,6 +467,8 @@ public class AddActivity extends AppCompatActivity implements LoaderManager.Load
         suppEditText.setText("");
         quantityEditText.setText("");
         itemPriceText.setText("");
+        suppPhone.setText("");
+        suppEmail.setText("");
     }
 
     @Override

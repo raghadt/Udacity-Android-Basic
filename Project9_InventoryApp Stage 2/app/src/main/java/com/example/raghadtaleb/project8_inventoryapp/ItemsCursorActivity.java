@@ -25,15 +25,6 @@ public class ItemsCursorActivity extends CursorAdapter {
         super(context, c, 0);
     }
 
-    public ItemsCursorActivity(Context context, Cursor c, boolean autoRequery) {
-        super(context, c, autoRequery);
-    }
-
-
-    public ItemsCursorActivity(Context context, Cursor c, int flags) {
-        super(context, c, flags);
-    }
-
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         return LayoutInflater.from(context).inflate(R.layout.list_items, parent, false);
     }

@@ -14,7 +14,6 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -49,15 +48,6 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
     private boolean changedItem = false;
 
 
-    private View.OnTouchListener touchListener = new View.OnTouchListener() {
-
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            changedItem = true;
-            return false;
-        }
-    };
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,14 +58,10 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         currentItemUri = intent.getData();
 
         if (currentItemUri != null) {
-            setTitle(R.string.editing_item);
+            setTitle("Item Details");
             getLoaderManager().initLoader(EXISTING_ITEM_LOADER, null, this);
 
-        } else {
-            setTitle(R.string.add_new_item);
-            invalidateOptionsMenu();
         }
-
         itemTextView = findViewById(R.id.edit_itemname);
         suppTextView = findViewById(R.id.edit_suppname);
         itemPriceText = findViewById(R.id.edit_price);
@@ -321,8 +307,8 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
             int supplierIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPPLIER);
             int quantityIndex = cursor.getColumnIndex(nachosEntry.COLUMN_QUANTITY);
             int priceIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
-            int phoneIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
-            int mailIndex = cursor.getColumnIndex(nachosEntry.COLUMN_PRICE);
+            int phoneIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPER_PHONE);
+            int mailIndex = cursor.getColumnIndex(nachosEntry.COLUMN_SUPP_EMAIL);
 
             String name = cursor.getString(nameIndex);
             String supplier = cursor.getString(supplierIndex);
@@ -348,6 +334,8 @@ public class DetailsActivity extends AppCompatActivity implements LoaderManager.
         suppTextView.setText("");
         quantityTextView.setText("");
         itemPriceText.setText("");
+        suppPhoneText.setText("");
+        suppEmailText.setText("");
     }
 
     @Override
